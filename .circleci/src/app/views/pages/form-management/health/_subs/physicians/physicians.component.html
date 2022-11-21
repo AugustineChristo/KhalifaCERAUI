@@ -1,0 +1,522 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="onSubmit()" class="kt-form kt-form--group-seperator-dashed">
+        <div class="kt-form__section kt-form__section--first">
+            
+            <div class="form-group  row">
+                
+            <div class="col-md-6  form-group"></div>
+            
+            <div class="col-md-4  form-group"></div>
+            
+            <div class="col-md-2 kt-margin-bottom-20-mobile">
+                       
+                <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                mat-raised-button matTooltip="Save Details">
+                <i class="la la-save"></i>
+                <span class="kt-hidden-mobile">Save</span>
+                </a>
+                </div>  
+                </div>
+                <div class="row ">
+                    <div  class="col-md-2 form-group">
+                    <strong>Urine tests summary (report abnormal):</strong>
+                    </div>
+                    </div>
+                <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Macroscopic appearance
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker506"
+                                       (click)="dobPicker506.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsmacroscopic_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker506"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker506></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsmacroscopic_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker507"
+                                       (click)="dobPicker507.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsmacroscopic_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker507"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker507></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsmacroscopic_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsmacroscopic_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+                <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            pH
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker51"
+                                       (click)="dobPicker51.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsph_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker51"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker51></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsph_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker508"
+                                       (click)="dobPicker508.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsph_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker508"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker508></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsph_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsph_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+               <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Glucose
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker521"
+                                       (click)="dobPicker521.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsglucose_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker521"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker521></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsglucose_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker509"
+                                       (click)="dobPicker509.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsglucose_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker509"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker509></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsglucose_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsglucose_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+                 <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Specific gravity
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker53"
+                                       (click)="dobPicker53.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsgravity_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker53"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker53></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsgravity_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker5101"
+                                       (click)="dobPicker5101.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsgravity_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker5101"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker5101></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsgravity_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsgravity_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+               <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Nitrites
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker5410"
+                                       (click)="dobPicker5410.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsnitrite_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker5410"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker5410></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsnitrite_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker6011"
+                                       (click)="dobPicker6011.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsnitrite_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker6011"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker6011></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsnitrite_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsnitrite_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>  
+              <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Leukocyte esterase
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker551"
+                                       (click)="dobPicker551.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsleukocyte_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker551"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker551></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsleukocyte_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker6021"
+                                       (click)="dobPicker6021.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsleukocyte_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker6021"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker6021></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsleukocyte_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsleukocyte_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>  
+                   <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Microscopy (cells)
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker561"
+                                       (click)="dobPicker561.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsmicroscopy_cells_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker561"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker561></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsmicroscopy_cells_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker6031"
+                                       (click)="dobPicker6031.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsmicroscopy_cells_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker6031"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker6031></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsmicroscopy_cells_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsmicroscopy_cells_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+         <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Microscopy (casts)
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker1570"
+                                       (click)="dobPicker1570.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsmicroscopy_casts_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker1570"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker1570></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsmicroscopy_casts_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker604"
+                                       (click)="dobPicker604.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsmicroscopy_casts_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker604"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker604></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsmicroscopy_casts_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsmicroscopy_casts_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div> 
+            <div class="row ">
+                    <div class="col-md-2 form-group">
+                        <label><br>
+                            Microscopy (crystals)
+                        </label>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker158"
+                                       (click)="dobPicker158.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of recent test"
+                                   formControlName="bio_utsmicroscopy_crystals_date_of_recent_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker158"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker158></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Result of recent test"
+                                   formControlName="bio_utsmicroscopy_crystals_result_of_recent_test" />
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                              <input matInput [matDatepicker]="dobPicker605"
+                                       (click)="dobPicker605.open()"
+                                       [max]="maxDate"
+                                       autocomplete="off"
+                                       placeholder="Date of last test"
+                                   formControlName="bio_utsmicroscopy_crystals_date_of_last_test" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker605"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker605></mat-datepicker>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2  form-group">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Results of the last test"
+                                   formControlName="bio_utsmicroscopy_crystals_result_of_last_test" />
+                        </mat-form-field>
+                    </div>
+        
+                    <div class="col-md-2  form-group"><mat-radio-group 
+                                   formControlName="bio_utsmicroscopy_crystals_result_normal" >
+                        
+                        <label>
+                                    Is result normal?
+                                </label><mat-radio-button  value="Yes">Yes</mat-radio-button>
+                        <mat-radio-button  value="No">No</mat-radio-button>
+                    </mat-radio-group>
+                </div> 
+            </div> 
+             
+            <div class="form-group  row">
+                
+                <div class="col-md-6  form-group"></div>
+                
+                <div class="col-md-4  form-group"></div>
+                
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                           
+                    <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                    mat-raised-button matTooltip="Save Details">
+                    <i class="la la-save"></i>
+                    <span class="kt-hidden-mobile">Save</span>
+                    </a>
+                    </div>  
+                    </div>
+        </div>
+
+    </form>
+</div>
+

@@ -1,0 +1,441 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+    
+        <div class="form-group  row">
+                
+            <div class="col-md-3 kt-margin-bottom-20-mobile"  >
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput autocomplete="off" formControlName="sample" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" />
+                    <!-- <div *ngIf="submitted && f.sample.errors" class="invalid-feedback">
+                        <div *ngIf="f.sample.errors.required">Sample is required</div>
+                    </div> -->
+                    <mat-placeholder>Sample Id<strong style="color:red;" *ngIf="showSave">(*)</strong></mat-placeholder>
+                   
+                    <div *ngIf="f.sample.invalid && (f.sample.dirty || f.sample.touched)" class="alert alert-danger">
+                       
+                        <div *ngIf="f.sample.errors">Sample allowed only numeric but not special characters </div>
+                                </div>
+                    <!-- <mat-error>
+                        <span *ngIf="!form.get('sample').valid && form.get('sample').touched">Please enter Sample</span>
+                    </mat-error> -->
+                    
+                </mat-form-field>
+            </div>
+
+                <div class="col-md-5 kt-margin-bottom-20-mobile" >
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Project Title"
+                               autocomplete="off"
+                               formControlName="projecttitle" />
+                              
+                    </mat-form-field>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                  
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput [matDatepicker]="doaPicker"
+                               (click)="doaPicker.open()"
+                               autocomplete="off"
+                               [max]="maxDate"
+                               placeholder="Date of Collection:" (click)="doaPicker.open()" formControlName="collected_date" />
+                        <mat-datepicker-toggle matSuffix [for]="doaPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #doaPicker></mat-datepicker>
+                       
+                    </mat-form-field>
+                </div>
+               
+                <div class="col-md-2 kt-margin-bottom-20-mobile" *ngIf="showSave" >
+                    <a href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                    mat-raised-button matTooltip="Save & Continue">
+                    <i class="la la-save"></i>
+                    <span class="kt-hidden-mobile">Save</span>
+                    </a>
+                    </div>  
+        </div>
+          
+        <div class="form-group  row">
+            <div class="col-md-3 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Principal Investigator"
+                           autocomplete="off"
+                           formControlName="principalinvestigator" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 row form-group">
+                <mat-form-field>
+                    <mat-select placeholder="Collection Point" formControlName="collection_point">
+                        <mat-option *ngFor="let data of filteredColletionType"
+                             value="{{ data.name }}">{{ data.name }}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+        </div>
+           
+            <div class="col-md-3 kt-margin-bottom-20-mobile">
+                    <!-- <input matInput placeholder="Collected By(First & Last Name)" autocomplete="off" formControlName="collected_by" /> -->
+                    <mat-form-field>
+                        <mat-select placeholder="Collected By" formControlName="collected_by">
+                            <mat-option *ngFor="let data of filteredCollectedby"
+                                 value="{{ data.name }}">{{ data.name }}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                    
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Medical Reference Number (MRN):" autocomplete="off" formControlName="medical_reference_number" />
+                    
+                </mat-form-field>
+            </div>
+           
+        </div>
+
+    
+        <div  *ngFor="let userrights of userRights">
+        
+            <div class="form-group  row" *ngIf="!showSave && userrights.sectionid === 1 &&  userrights.usertype === 'Admin'">
+              
+        <div class="form-group  row">
+            <div class="col-md-5 kt-margin-bottom-20-mobile">
+                <div class="mat-form-field-fluid">
+
+                    <label id="example-radio-group-label" disabled="disabled"> Individual/Family<strong style="color:red;"  *ngIf="showSave">(*)</strong>&nbsp;&nbsp;&nbsp;</label>
+        
+                    <mat-radio-group matInput aria-labelledby="example-radio-group-label" required [ngClass]="{ 'is-invalid': submitted && f.indifamily.errors }" formControlName="indifamily" >
+                        <mat-radio-button matInput  value="Individual">Individual/فرد</mat-radio-button>
+                        <mat-radio-button  matInput value="Family">Family/عائلة</mat-radio-button>
+                    </mat-radio-group>
+                    <div *ngIf="submitted && f.indifamily.errors" class="invalid-feedback">
+                        <div *ngIf="f.indifamily.errors.required">Individual/Family is to be selected</div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="col-md-2 kt-margin-bottom-20-mobile" *ngIf="form.get('indifamily').value === 'Family'">
+            <mat-form-field class="mat-form-field-fluid">
+                
+                <input matInput  type="number" autocomplete="off"  formControlName="family_number"  [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.family_number.errors }" />
+                <mat-placeholder >Family No*/رقم <strong style="color:red;">(*)</strong></mat-placeholder>
+                           
+                <div *ngIf="submitted && f.family_number.errors" class="invalid-feedback">
+                    <div *ngIf="f.family_number.errors.required">Family Number is required</div>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="col-md-1 kt-margin-bottom-20-mobile" *ngIf="form.get('indifamily').value === 'Family'">
+            <div class="mat-form-field-fluid">
+            <label id="example-radio-group-label">If Family/اذا عائلة &nbsp;&nbsp;&nbsp;</label>
+        </div>
+    </div>
+        <div class="col-md-3 form-group" *ngIf="form.get('indifamily').value === 'Family'">
+            <div>
+                <mat-radio-group aria-labelledby="example-radio-group-label"  formControlName="family_yes">
+                    <mat-radio-button matInput  value="Father">Father/أب</mat-radio-button>
+                    <mat-radio-button  matInput value="Mother">Mother/أم</mat-radio-button>
+                    <mat-radio-button matInput  value="Adult">Adult/بالغ Greater than 18 </mat-radio-button>
+                    <mat-radio-button  matInput value="Child">Child/طفل Less than 18</mat-radio-button>
+                </mat-radio-group>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="form-group  row">
+<div class="col-md-12">
+        <label align="start">
+         <h5>1. Participant’s Personal Details/التفاصيل الشخصية </h5>  
+        </label>
+</div>
+</div>
+        <div class="form-group  row">
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="First Name/الاسم الأول" autocomplete="off"  formControlName="per_firstname" />
+                    <div *ngIf="f.per_firstname.invalid && (f.per_firstname.dirty || f.per_firstname.touched)" class="alert alert-danger">
+                       
+                        <div *ngIf="f.per_firstname.errors.pattern">First Name allowed only '-' character but Not numeric and special characters </div>
+                                </div>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Middle Name/الاسم الثاني" autocomplete="off" formControlName="per_middlename" />
+                    <div *ngIf="f.per_middlename.invalid && (f.per_middlename.dirty || f.per_middlename.touched)" class="alert alert-danger">
+                       
+                        <div *ngIf="f.per_middlename.errors.pattern">Middle Name allowed only '-' character but Not numeric and special characters </div>
+                                </div>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Last Name/اسم العائلة" autocomplete="off" formControlName="per_lastname" />
+                    <div *ngIf="f.per_lastname.invalid && (f.per_lastname.dirty || f.per_lastname.touched)" class="alert alert-danger">
+                       
+                        <div *ngIf="f.per_lastname.errors.pattern">Last Name allowed only '-' character but Not numeric and special characters </div>
+                                </div>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group  row">
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <div class="mat-form-field-fluid">
+
+                    <label id="example-radio-group-label">Gender &nbsp;&nbsp;&nbsp;</label>
+
+                    <mat-radio-group aria-labelledby="example-radio-group-label"  formControlName="gender">
+                        <mat-radio-button matInput  value="Male">Male/ذكر</mat-radio-button>
+                        <mat-radio-button  matInput value="Female">Female/أنثى</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                
+                <mat-form-field class="mat-form-field-fluid">
+                   <input matInput type="text" minlength="15" maxlength="18" [specialCharacters]="[ '-' ]" mask="000-0000-0000000-0" formControlName="emiratesid" required [errorStateMatcher]="matcher"  onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"  [ngClass]="{ 'is-invalid': submitted && f.emiratesid.errors }" 
+                      />
+                      <mat-placeholder>Emirates ID/رقم الهوية<strong style="color:red;" *ngIf="showSave">(*)</strong></mat-placeholder>
+                   
+                      <div *ngIf="f.emiratesid.invalid && (f.emiratesid.dirty || f.emiratesid.touched)" class="alert alert-danger">
+                       
+                        <div *ngIf="f.emiratesid.errors"> Emirates ID Number is required with 15 digits & should start with 784. </div>
+                                </div>
+
+                   </mat-form-field>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Nationality/الجنسية:" formControlName="nationality" [matAutocomplete]="manuf">
+                    <mat-autocomplete #manuf="matAutocomplete">
+                        <mat-option *ngFor="let nationality of filteredNationalities | async" [value]="nationality">
+                            {{ nationality }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>
+                        Nationality is
+                        <strong>required</strong>
+                    </mat-error>
+                    <!--<mat-hint align="start">Please enter-->
+                    <!--<strong>Nationality</strong>-->
+                    <!--</mat-hint>-->
+                </mat-form-field>
+            </div>
+        </div>
+       
+        <div class="form-group  row">
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                
+                <mat-form-field class="mat-form-field-fluid">
+                  
+                    <owl-date-time #dt2></owl-date-time>
+                    <input matInput [matDatepicker]="dobPicker"
+                           (click)="dobPicker.open()"
+                           [max]="maxDate"
+                           autocomplete="off"
+                           (ngModelChange)="CalculateAge()" 
+                           placeholder="Choose a Date of Birth/تاريخ الميلاد" formControlName="dob" />
+                    <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #dobPicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-1 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Age"  autocomplete="off"   formControlName="age" />
+                </mat-form-field>
+            </div>
+           
+<div class="col-md-3 kt-margin-bottom-20-mobile">
+<mat-form-field class="mat-form-field-fluid">
+    <input matInput placeholder="Place Of Birth/مكان الميلاد" autocomplete="off"
+           [matAutocomplete]="manuf1"       formControlName="placeofbirth" />
+
+    <mat-autocomplete #manuf1="matAutocomplete">
+        <mat-option *ngFor="let data of filteredPlaces | async" [value]="data">
+            {{ data }}
+        </mat-option>
+    </mat-autocomplete>
+
+</mat-form-field>
+</div>
+
+
+            </div>
+            <div  *ngFor="let userrights of userRights">
+        
+            <!-- <div class="form-group  row" *ngIf="userrights.sectionid === 1 &&  userrights.usertype === 'Admin'"> -->
+              
+                <div class="form-group  row" *ngIf="userrights.sectionid === 1 &&  (userrights.usertype === 'Admin' || userrights.usertype === 'User')">
+                                
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+		<mat-form-field class="example-full-width">
+			<mat-select placeholder="City/Emirate/المدينة/الامارة:" formControlName="city">
+				<mat-option *ngFor="let data of filteredLocation"
+					 value="{{ data.name }}">{{ data.name }}
+				</mat-option>
+			</mat-select>
+
+		</mat-form-field>
+	</div>
+
+        <!--pattern="^(?:\971)?(?:50|54|52|55|56|53|58|20|21|22|23|24|25|26|27|28|29|40|41|42|43|44|45|46|47|48|49)\d{6,7}$" <div class="form-group  row" *ngIf="userrights.sectionid === 2 && (userrights.usertype === 'User')"> -->
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                
+                   <mat-form-field class="mat-form-field-fluid">
+                  
+                    <input matInput   type="text" 
+                    
+                  type="tel" [specialCharacters]="[ '+',' ']" 
+                
+                 mask="+000 000000000||+000 00000000"   [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+                    formControlName="phone" >
+                    <mat-placeholder>Phone Number(+971 XXXX)/الهاتف <strong style="color:red;" *ngIf="showSave">(Email or PhoneNo *)</strong></mat-placeholder>
+                   
+                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                        <div *ngIf="f.phone.errors.required">Phone Number should start with 971- 50|54|52|55|58|56|4|65|66|2</div>
+                    </div>
+                   </mat-form-field>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile" >
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput autocomplete="off" formControlName="email"  [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <mat-placeholder>Email/البريد الإلكتروني <strong style="color:red;"  *ngIf="showSave">(Email or PhoneNo *)</strong></mat-placeholder>
+                 
+                    <div *ngIf="submitted && f.email.invalid && (f.email.dirty || f.email.touched)" class="alert alert-danger">
+                         <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                       </div>
+                    <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                       </div>  -->
+                   </mat-form-field>
+            </div>
+            </div>
+            
+	            </div> 
+<div class="form-group  row">
+    <div class="col-md-12">
+        <label align="start">
+         <h5>2. Participant’s Clinical Details/التفاصيل الطبية </h5>  
+         <h5>2.a: Physical Measurements (filled or taken by Registered Nurse) القياسات البدنية (تم تدوينها أو تم أخذها عن طريق الممرضة المسجلة))</h5>  
+
+        </label>
+</div>
+</div>
+<div class="form-group  row">
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Body Weight(kg):" autocomplete="off"   (ngModelChange)="calculateBodyMass()"  formControlName="pcd_bodyweight" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="Neck Circumference (cm):"  autocomplete="off"  (ngModelChange)="calculateBodyMass()" formControlName="pcd_neckcircumference" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="Height (m):"  autocomplete="off"  (ngModelChange)="calculateBodyMass()" formControlName="pcd_height" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput type="number" placeholder="Body Mass Index (kg/m2):"  autocomplete="off"   formControlName="pcd_bmi" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="form-group  row">
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Waist Circumference (cm)" autocomplete="off"      formControlName="pcd_waist" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Hip Circumference (cm)" autocomplete="off"      formControlName="pcd_hip" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Body Fat Mass (Kg)" autocomplete="off"      formControlName="pcd_bodymass" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="form-group  row">
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Body Fat Percentage (%)" autocomplete="off"      formControlName="pcd_bodyfatper" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Waist To Hip Ratio (WHR) (WR/HR)" autocomplete="off"      formControlName="pcd_whr" />
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="form-group  row">
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <div class="kt-section">
+            <label align="start">
+                Blood Pressure: </label>
+        </div>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Systolic (mm/Hg)" formControlName="pcd_bloodpressuresystolic" autocomplete="off"    />
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="Diastolic (mm/Hg)" formControlName="pcd_bloodpressurediastolic" autocomplete="off"    />
+        </mat-form-field>
+    </div>
+</div>
+
+<!-- <div class="form-group  row">
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <label class="lab-mar-right-20" >Skin Color</label>
+            <br>
+            <mat-radio-group aria-labelledby="SkinColor"  formControlName="skincolor">
+                <mat-radio-button matInput  value="white">White</mat-radio-button>
+                <mat-radio-button  matInput value="black">Black</mat-radio-button>
+                <mat-radio-button  matInput value="brown">Brown</mat-radio-button>
+                <mat-radio-button  matInput value="other">Other</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        
+    </div>
+    <div *ngIf="form.get('skincolor').value === 'other'"  class="dis-con">
+        <div class="col-md-2 form-group">
+            <mat-form-field class="mat-form-field-fluid">
+                <input matInput placeholder="If other, please specify"
+                       formControlName="skincolor_other_text" />
+            </mat-form-field>
+        </div>
+    </div>
+</div> -->
+    
+<div class="form-group  row">
+                
+    <div class="col-md-6  form-group"></div>
+    
+    <div class="col-md-4  form-group"></div>
+    
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+               
+        <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+        mat-raised-button matTooltip="Save Details">
+        <i class="la la-save"></i>
+        <span class="kt-hidden-mobile">Save</span>
+        </a>
+        </div>  
+        </div>
+    </form>
+</div>
+

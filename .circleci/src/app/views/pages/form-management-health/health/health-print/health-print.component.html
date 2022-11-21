@@ -1,0 +1,44 @@
+
+<kt-portlet id="print_form">
+    <kt-portlet-body style="padding:15px 0px 15px 0px !important; ">
+        <div class="kt-form kt-margin-b-30">
+            <div class="">
+                <kt-portlet-header [title]="'Personal Details'" [class]="'kt-portlet__head--lg'" >
+                </kt-portlet-header>
+                <kt-portlet-body  class="kt-portlet__body">
+                <kt-health-personal-details [disableInput]="isPrint"   [formData]="formId"  #appHealthPersonalDetails></kt-health-personal-details>
+                </kt-portlet-body>
+            </div>
+            <div class="">
+                <kt-portlet-header [title]="'Physician Details'" [class]="'kt-portlet__head--lg'" >
+                </kt-portlet-header>
+                <kt-portlet-body  class="kt-portlet__body">
+                    <kt-health-physician [disableInput]="isPrint"   [formData]="formId" #appHealthPhysicianDetails></kt-health-physician>
+                </kt-portlet-body> </div>
+                <div class="">
+                    <kt-portlet-header [title]="'Register Nurse'" [class]="'kt-portlet__head--lg'" >
+                    </kt-portlet-header>
+                    <kt-portlet-body  class="kt-portlet__body">
+                        <kt-health-register-nurse [disableInput]="isPrint"   [formData]="formId" #appHealthRegisterNurse></kt-health-register-nurse>
+					</kt-portlet-body> </div>
+					<div class="">
+						<kt-portlet-header [title]="'Research Team Member'" [class]="'kt-portlet__head--lg'" >
+						</kt-portlet-header>
+						<kt-portlet-body  class="kt-portlet__body">
+							<kt-health-research-teammember [disableInput]="isPrint"   [formData]="formId" #appHealthResearchTeamMember></kt-health-research-teammember >
+						</kt-portlet-body> </div>
+
+               
+
+
+
+        </div>
+    </kt-portlet-body>
+</kt-portlet>
+
+
+
+
+
+
+

@@ -1,0 +1,438 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+        <div class="kt-form__section kt-form__section--first">
+
+            <div *ngFor="let userrights of userRights">
+
+                <div class="form-group  row" *ngIf="userrights.sectionid === 3 && userrights.usertype === 'Admin'">
+
+                    <div class="col-md-6  form-group"></div>
+
+                    <div class="col-md-4  form-group"></div>
+
+                    <div class="col-md-2 kt-margin-bottom-20-mobile">
+
+                        <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid"
+                            class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                            mat-raised-button matTooltip="Save Details">
+                            <i class="la la-save"></i>
+                            <span class="kt-hidden-mobile">Save</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div *ngFor="let userrights of userRights">
+
+                <div *ngIf="userrights.sectionid === 3 && userrights.usertype === 'User'">
+
+                    <div class="form-group  row">
+
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Sample Id" autocomplete="off" formControlName="sample"
+                                    [errorStateMatcher]="matcher"
+                                    [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" />
+
+                                <!-- <mat-error>
+                        <span *ngIf="!form.get('sample').valid && form.get('sample').touched">Please enter Sample</span>
+                    </mat-error> -->
+
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Project Title" autocomplete="off"
+                                    formControlName="projecttitle" />
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-2 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput [matDatepicker]="doaPicker" autocomplete="off"
+                                    (click)="doaPicker.open()" placeholder="Collection Date" (click)="doaPicker.open()"
+                                    formControlName="collected_date" />
+                                <mat-datepicker-toggle matSuffix [for]="doaPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #doaPicker></mat-datepicker>
+                                <!--<mat-hint align="start">Please enter-->
+                                <!--<strong>Date of assessment</strong> in 'mm/dd/yyyy' format</mat-hint>-->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-2 kt-margin-bottom-20-mobile">
+
+                            <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid"
+                                class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                                mat-raised-button matTooltip="Save & Continue">
+                                <i class="la la-save"></i>
+                                <span class="kt-hidden-mobile">Save</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="form-group  row">
+                        <div class="col-md-3 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Principal Investigator" autocomplete="off"
+                                    formControlName="principalinvestigator" />
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3 row form-group">
+                            <mat-form-field>
+                                <mat-select placeholder="Collection Point" formControlName="collection_point">
+                                    <mat-option *ngFor="let data of filteredColletionType" value="{{ data.name }}">{{
+                                        data.name }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+
+                        <div class="col-md-3 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="collected By(First & Last Name)" autocomplete="off"
+                                    formControlName="collected_by" />
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-3 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Medical Reference Number (MRN):" autocomplete="off"
+                                    formControlName="medical_reference_number" />
+
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group  row">
+                        <div class="col-md-12">
+                            <label align="start">
+                                <h5>1. Participant’s Personal Details/التفاصيل الشخصية </h5>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="First Name/الاسم الأول" autocomplete="off"
+                                    formControlName="per_firstname" />
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Middle Name/الاسم الثاني" autocomplete="off"
+                                    formControlName="per_middlename" />
+
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Last Name/اسم العائلة" autocomplete="off"
+                                    formControlName="per_lastname" />
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <div class="mat-form-field-fluid">
+
+                                <label id="example-radio-group-label">Gender &nbsp;&nbsp;&nbsp;</label>
+
+                                <mat-radio-group aria-labelledby="example-radio-group-label" formControlName="gender">
+                                    <mat-radio-button matInput value="Male">Male/ذكر</mat-radio-button>
+                                    <mat-radio-button matInput value="Female">Female/أنثى</mat-radio-button>
+                                </mat-radio-group>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <!-- <input matInput placeholder="Sample Id" autocomplete="off" formControlName="sample" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" />
+                        <div *ngIf="submitted && f.sample.errors" class="invalid-feedback">
+                            <div *ngIf="f.sample.errors.required">Sample is required</div>
+                        </div> -->
+
+
+                                <!-- <input matInput placeholder="Emirates ID number" autocomplete="off" formControlName="emiratesid" required [errorStateMatcher]="matcher"  placeholder="784XXXXXXXXXXXX" [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" /> -->
+                                <input matInput type="text" [specialCharacters]="[ '-' ]" mask="000-0000-0000000-0"
+                                    formControlName="emiratesid" [errorStateMatcher]="matcher"
+                                    placeholder="Emirates ID(784XXXXXXXXXXXX)/رقم الهوية"
+                                    [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" />
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Nationality/الجنسية:" formControlName="nationality"
+                                    [matAutocomplete]="manuf">
+                                <mat-autocomplete #manuf="matAutocomplete">
+                                    <mat-option *ngFor="let nationality of filteredNationalities | async"
+                                        [value]="nationality">
+                                        {{ nationality }}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-error>
+                                    Nationality is
+                                    <strong>required</strong>
+                                </mat-error>
+                                <!--<mat-hint align="start">Please enter-->
+                                <!--<strong>Nationality</strong>-->
+                                <!--</mat-hint>-->
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-group  row">
+                        <div class="col-md-4 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput [matDatepicker]="dobPicker" (click)="dobPicker.open()"
+                                    autocomplete="off" (ngModelChange)="CalculateAge()"
+                                    placeholder="Choose a Date of Birth/تاريخ الميلاد" formControlName="dob" />
+                                <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #dobPicker></mat-datepicker>
+                                <!--<mat-hint align="start">Please enter-->
+                                <!--<strong>Date of Birth</strong> in 'mm/dd/yyyy' format</mat-hint>-->
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-1 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Age" autocomplete="off" formControlName="age" />
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-3 kt-margin-bottom-20-mobile">
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="Place Of Birth/مكان الميلاد" autocomplete="off"
+                                    [matAutocomplete]="manuf1" formControlName="placeofbirth" />
+
+                                <mat-autocomplete #manuf1="matAutocomplete">
+                                    <mat-option *ngFor="let data of filteredPlaces | async" [value]="data">
+                                        {{ data }}
+                                    </mat-option>
+                                </mat-autocomplete>
+
+                            </mat-form-field>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-12 form-group">
+                <h6>
+                    Laboratory Details (Filled by research members)/التفاصيل المختبرية (تملأ من قبل فريق البحث)
+                </h6>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-4">
+                <div class="kt-section">
+                    <label align="start">
+                        Sample
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-8 kt-margin-bottom-20-mobile">
+                <div class="mat-form-field-fluid">
+                    <mat-checkbox class="lab-mar-right-15" formControlName="lab_sample_type_blood">Blood EDTA
+                    </mat-checkbox>
+                    <mat-checkbox class="lab-mar-right-15" formControlName="lab_sample_type_tissue">Blood Serum
+                    </mat-checkbox>
+                    <mat-checkbox class="lab-mar-right-15" formControlName="lab_sample_type_saliva">Saliva
+                    </mat-checkbox>
+                    <mat-checkbox class="lab-mar-right-15" formControlName="lab_sample_type_urine">Urine</mat-checkbox>
+
+                </div>
+            </div>
+        </div>
+        <div class="row col-md-12">
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_blood').value">
+                <mat-form-field>
+
+                    <mat-placeholder>Blood EDTA Sample receiving<br />date & Time from patient:<strong
+                            style="color:red;" *ngIf="showSave"></strong></mat-placeholder>
+
+                    <input matInput [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date">
+                    <owl-date-time #dt1></owl-date-time>
+
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_tissue').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <mat-placeholder>Blood Serum Sample receiving<br />date & Time from patient:<strong style="color:red;"
+                            *ngIf="showSave"></strong></mat-placeholder>
+
+                    <input matInput [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_tissue">
+                    <owl-date-time #dt2></owl-date-time>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_saliva').value">
+
+
+                <mat-form-field>
+                    <mat-placeholder style="height: 40px;">Saliva Sample receiving<br />date & Time from patient:<strong
+                            style="color:red;" *ngIf="showSave"></strong></mat-placeholder>
+
+                    <input matInput [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_saliva">
+                    <owl-date-time #dt3></owl-date-time>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_urine').value">
+                <mat-form-field>
+                    <mat-placeholder>Urine Sample receiving<br /> date & Time from patient:<strong style="color:red;"
+                            *ngIf="showSave"></strong></mat-placeholder>
+
+                    <input matInput [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_urine">
+                    <owl-date-time #dt4></owl-date-time>
+                </mat-form-field>
+
+            </div>
+
+        </div>
+
+        <div class="row col-md-12">
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_blood').value">
+                <mat-form-field>
+                    <mat-placeholder>Blood EDTA Sample collected<br />date & Time from hospital:<strong
+                            style="color:red;" *ngIf="showSave"></strong></mat-placeholder>
+
+                    <input matInput [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_hospital">
+                    <owl-date-time #dt5></owl-date-time>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_tissue').value">
+                <mat-form-field>
+                    <mat-placeholder>Blood Serum Sample collected<br />date & Time from hospital:<strong
+                            style="color:red;" *ngIf="showSave"></strong></mat-placeholder>
+                    <input matInput [owlDateTime]="dt6" [owlDateTimeTrigger]="dt6" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_serum_hospital">
+                    <owl-date-time #dt6></owl-date-time>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_saliva').value">
+                <mat-form-field>
+                    <mat-placeholder>Saliva Sample collected<br /> date & Time from hospital:<strong style="color:red;"
+                            *ngIf="showSave"></strong></mat-placeholder>
+                    <input matInput [owlDateTime]="dt7" [owlDateTimeTrigger]="dt7" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_saliva_hospital">
+                    <owl-date-time #dt7></owl-date-time>
+                </mat-form-field>
+
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_urine').value">
+                <mat-form-field>
+                    <mat-placeholder>Urine Sample collected<br />date & Time from hospital:<strong style="color:red;"
+                            *ngIf="showSave"></strong></mat-placeholder>
+                    <input matInput [owlDateTime]="dt8" [owlDateTimeTrigger]="dt8" style="height: 25px;" [max]="maxDate"
+                        formControlName="lab_sample_date_urine_hospital">
+                    <owl-date-time #dt8></owl-date-time>
+                </mat-form-field>
+
+            </div>
+
+        </div>
+        <div class="row col-md-12">
+
+
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_blood').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Blood EDTA Storage" autocomplete="off" formControlName="lab_storage" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_tissue').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Blood Serum Storage" autocomplete="off"
+                        formControlName="lab_storage_tissue" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_saliva').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Saliva Storage" autocomplete="off"
+                        formControlName="lab_storage_saliva" />
+                </mat-form-field>
+            </div>
+
+
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_urine').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Urine Storage" autocomplete="off"
+                        formControlName="lab_storage_urine" />
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row col-md-12">
+
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_blood').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Blood EDTA Total Sample Volume(mL)" autocomplete="off"
+                        formControlName="lab_sample_volume" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_tissue').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Blood Serum Total Sample Volume(mL)" autocomplete="off"
+                        formControlName="lab_sample_volume_tissue" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_saliva').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Saliva Total Sample Volume(mL)" autocomplete="off"
+                        formControlName="lab_sample_volume_saliva" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-3 kt-margin-bottom-20-mobile" *ngIf="form.get('lab_sample_type_urine').value">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Urine Total Sample Volume(mL)" autocomplete="off"
+                        formControlName="lab_sample_volume_urine" />
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="row col-md-12">
+            <div class="col-md-8 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <textarea matInput placeholder="Comments" rows="5" autocomplete="off"
+                        formControlName="lab_comments">
+                        </textarea>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="form-group  row">
+
+            <div class="col-md-6  form-group"></div>
+
+            <div class="col-md-4  form-group"></div>
+
+            <div class="col-md-2 kt-margin-bottom-20-mobile">
+
+                <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10"
+                    color="primary" (click)="onSubmit()" mat-raised-button matTooltip="Save Details">
+                    <i class="la la-save"></i>
+                    <span class="kt-hidden-mobile">Save</span>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

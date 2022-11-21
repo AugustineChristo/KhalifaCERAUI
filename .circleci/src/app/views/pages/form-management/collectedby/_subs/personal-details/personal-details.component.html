@@ -1,0 +1,36 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+        <div class="kt-form__section kt-form__section--first">
+
+            <div class="form-group  row">
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="First Name" autocomplete="off" minLength="1"
+                        formControlName="firstname" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                        <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstname.errors.required">First Name is <strong>required </strong></div>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Last Name" autocomplete="off" minLength="1"
+                        formControlName="lastname" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" />
+                        <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastname.errors.required">Last Name is <strong>required</strong></div>
+                        </div>
+                    </mat-form-field>
+                </div>
+
+ <!--                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Full Name" autocomplete="off"
+                        formControlName="name" />
+                    </mat-form-field>
+                </div> -->
+            </div>
+           
+        </div>
+    </form>
+</div>

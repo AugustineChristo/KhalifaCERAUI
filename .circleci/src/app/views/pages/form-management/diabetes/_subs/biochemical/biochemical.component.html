@@ -1,0 +1,1838 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="Mform" class="kt-form kt-form--group-seperator-dashed">
+		<div class="row">
+		<div  class="col-md-2 form-group">
+	<strong>Diabetes Status</strong>
+	   </div>
+		</div>
+		<div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Fasting glucose level
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_FastingGlucose_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_FastingGlucose_Result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_FastingGlucose_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_FastingGlucose_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_FastingGlucose_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Random glucose
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_RandomGlucose_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_RandomGlucose_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_RandomGlucose_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_RandomGlucose_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_RandomGlucose_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Glucose tolerance (OGTT)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_OGTT_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_OGTT_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_OGTT_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_OGTT_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_OGTT_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    FG after 2 hours
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_FG2_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_FG2_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_FG2_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_FG2_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_FG2_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    HbA1c (%)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_HbA1c_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_HbA1c_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_HbA1c_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_HbA1c_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_HbA1c_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Fasting insulin (mU/L)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Fasting_insulin_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Fasting_insulin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Fasting_insulin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Fasting_insulin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Fasting_insulin_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Blood ketone level
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Blood_ketone_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Blood_ketone_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Blood_ketone_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Blood_ketone_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Blood_ketone_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		<div class="row ">
+			<div  class="col-md-2 form-group">
+		<strong>Lipid Profile</strong>
+		   </div>
+			</div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Total cholesterol (mg/dl)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_TotalCholesterol_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_TotalCholesterol_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_TotalCholesterol_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_TotalCholesterol_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_TotalCholesterol_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Triglyceride (mg/dl)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Triglyceride_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Triglyceride_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Triglyceride_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Triglyceride_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Triglyceride_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    HDL (mg/dl)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_HDL_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_HDL_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_HDL_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_HDL_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_HDL_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    LDL (mg/dl)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_LDL_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_LDL_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_LDL_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_LDL_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_LDL_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Vitamin D level (ng/ml)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_VitaminDLevel_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_VitaminDLevel_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_VitaminDLevel_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_VitaminDLevel_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_VitaminDLevel_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		<div class="row ">
+			<div  class="col-md-2 form-group">
+			<strong>Kidney Function</strong>
+			</div>
+			</div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Microalbumin (mg)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Microalbumin_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Microalbumin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Microalbumin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Microalbumin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Microalbumin_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Albuminuria (mg/g)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_albuminuria_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_albuminuria_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_albuminuria_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_albuminuria_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_albuminuria_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Albumin/creatinine ratio (mg/gm)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_albumincreatinine_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_albumincreatinine_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_albumincreatinine_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_albumincreatinine_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_albumincreatinine_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Creatinine (mg/dl)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Creatinine_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Creatinine_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Creatinine_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Creatinine_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Creatinine_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Urea
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Urea_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Urea_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Urea_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Urea_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Urea_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    eGFR
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_egfr_before_medication" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_egfr_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_egfr_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_egfr_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_egfr_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		<div class="row ">
+			<div  class="col-md-2 form-group">
+			<strong>Minerals</strong>
+			</div>
+			</div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Serum sodium
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_sodium_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_sodium_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_sodium_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_sodium_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_sodium_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Serum potassium
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_potassium_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_potassium_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_potassium_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_potassium_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_potassium_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Serum calcium
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_calcium_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_calcium_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_calcium_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_calcium_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_calcium_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Serum magnesium
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Magnesium_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Magnesium_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Magnesium_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Magnesium_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Magnesium_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Phosphorus
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Phosphorus_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Phosphorus_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Phosphorus_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Phosphorus_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Phosphorus_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Bicarbonate
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Bicarbonate_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Bicarbonate_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Bicarbonate_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Bicarbonate_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Bicarbonate_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    ABG
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_ABG_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_ABG_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_ABG_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_ABG_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_ABG_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		<div class="row ">
+			<div  class="col-md-2 form-group">
+			<strong>Liver Function</strong>
+			</div>
+			</div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Alanine transaminase (ALT)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_ALT_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_ALT_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_ALT_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_ALT_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_ALT_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Alkaline phosphatase (ALP)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_ALP_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_ALP_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_ALP_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_ALP_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_ALP_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Aspartate transaminase (AST)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_AST_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_AST_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_AST_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_AST_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_AST_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Bilirubin (direct/indirect)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_bilirubin_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_bilirubin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_bilirubin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_bilirubin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_bilirubin_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Total protein
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Protein_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Protein_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Protein_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Protein_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Protein_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Serum albumin
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Serum_albumin_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Serum_albumin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Serum_albumin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Serum_albumin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Serum_albumin_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		<div class="row ">
+			<div  class="col-md-2 form-group">
+			<strong>Immune System</strong>
+			</div>
+			</div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    C-reactive protein
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_cprotein_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_cprotein_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_cprotein_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_cprotein_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_cprotein_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Fibrinogen
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Fibrinogen_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Fibrinogen_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Fibrinogen_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Fibrinogen_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Fibrinogen_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Interleukin 6 (IL6)
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Interleukin_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Interleukin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Interleukin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Interleukin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Interleukin_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Procalcitonin
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Procalcitonin_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Procalcitonin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Procalcitonin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Procalcitonin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Procalcitonin_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    PAI-1
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_PAI1_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_PAI1_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_PAI1_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_PAI1_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_PAI1_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		<div class="row ">
+			<div  class="col-md-2 form-group">
+			<strong>Hormonal Status</strong>
+			</div>
+			</div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Basal Insulin
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Insulin_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Insulin_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Insulin_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Insulin_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Insulin_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Cortisol
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Cortisol_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Cortisol_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Cortisol_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Cortisol_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Cortisol_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    T3
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_T3_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_T3_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_T3_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_T3_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_T3_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    T4
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_T4_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_T4_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_T4_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_T4_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_T4_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Free T4
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_FreeT4_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_FreeT4_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_FreeT4_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_FreeT4_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_FreeT4_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    TSH
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_TSH_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_TSH_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_TSH_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_TSH_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_TSH_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Parathyroid hormone
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_parathyroid_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_parathyroid_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_parathyroid_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_parathyroid_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_parathyroid_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Estrogen
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Estrogen_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Estrogen_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Estrogen_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Estrogen_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Estrogen_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Progesterone
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Progesterone_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Progesterone_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Progesterone_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Progesterone_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Progesterone_result_after12" />
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="row ">
+            <div class="col-md-2 form-group">
+                <label><br>
+                    Testosterone
+                </label>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Before medication treatment (if available)"
+                           formControlName="BIO_Testosterone_before" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 3 months"
+                           formControlName="BIO_Testosterone_result_after3" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 6 months"
+                           formControlName="BIO_Testosterone_result_after6" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 9 months"
+                           formControlName="BIO_Testosterone_result_after9" />
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-2  form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Results after 12 months"
+                           formControlName="BIO_Testosterone_result_after12" />
+                </mat-form-field>
+            </div>
+
+		</div>
+		
+     
+
+    </form>
+</div>

@@ -1,0 +1,109 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'CIRA'" [class]="'kt-portlet__head--lg'" [viewLoading$]="loading$">
+		<ng-container ktPortletTools >
+			<a  [routerLink]="[ formId ? '../../' : '../']"   class="btn btn-secondary kt-margin-r-10" mat-raised-button
+				matTooltip="Back to the forms list">
+				<i class="la la-arrow-left"></i>
+				<span class="kt-hidden-mobile">Back</span>
+			</a>
+			<!-- <a href="javascript:;"  class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+			mat-raised-button matTooltip="Save & Continue">
+			<i class="la la-save"></i>
+			<span class="kt-hidden-mobile">Save</span>
+		</a> -->
+
+		</ng-container>	
+		
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+
+		<mat-tab-group [(selectedIndex)]="selectedTab" >
+			<mat-tab *ngFor="let userrights of userRights">
+				<div *ngIf="userrights.sectionid === 1; else elseBlock">
+					<ng-template mat-tab-label>
+						<i class="mat-tab-label-icon fa fa-exchange-alt"></i>
+						 Register Nurse
+					</ng-template>
+						<kt-health-register-nurse [disableInput]="isPrint"   [formData]="formId" #appHealthRegisterNurse></kt-health-register-nurse>
+							</div>
+				<div #elseBlock *ngIf="formId !== undefined && userrights.sectionid === 2; else elseBlock2">
+					<ng-template mat-tab-label>
+							<i class="mat-tab-label-icon fa fa-user"></i>
+							Patient Survey Data
+						</ng-template>
+						<kt-health-personal-details [disableInput]="isPrint"   [formData]="formId"  #appHealthPersonalDetails></kt-health-personal-details>
+									</div>
+			<div *ngIf="formId !== undefined">
+			<div #elseBlock2 *ngIf="userrights.sectionid === 3; else elseBlock3">
+			<ng-template mat-tab-label>
+						<i class="mat-tab-label-icon fa fa-female"></i>
+						 Research Team Member
+					</ng-template>
+						<kt-health-research-teammember [disableInput]="isPrint"   [formData]="formId" #appHealthResearchTeamMember></kt-health-research-teammember>
+				</div></div>
+		 <div #elseBlock3 *ngIf="formId !== undefined && userrights.sectionid === 4; else elseBlock4">
+			<ng-template mat-tab-label >
+				<i class="mat-tab-label-icon fa fa-medkit"></i>
+				Physician Details
+			</ng-template>
+				<kt-health-physician [disableInput]="isPrint"   [formData]="formId" #appHealthPhysicianDetails></kt-health-physician>
+			
+		 </div>
+		 <div #elseBlock3 *ngIf="formId !== undefined && userrights.sectionid === 5; else elseBlock5">
+			<ng-template mat-tab-label >
+				<i class="mat-tab-label-icon fa fa-medkit"></i>
+				Biochemical Details
+			</ng-template>
+				<kt-health-physicianbiochemical [disableInput]="isPrint"   [formData]="formId" #appHealthPhysicianDetailsBiochemical></kt-health-physicianbiochemical>
+			
+		 </div>
+		 <div  #elseBlock5 *ngIf="formId !== undefined && userrights.sectionid === 6">
+			<ng-template mat-tab-label >
+				<i class="mat-tab-label-icon fa fa-medkit"></i>
+				Urine Test Summary
+			</ng-template>
+				<kt-health-physicians [disableInput]="isPrint"   [formData]="formId" #appHealthPhysiciansDetails></kt-health-physicians>
+			
+		 </div>
+			</mat-tab>
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-file"></i>
+					Document Upload
+				</ng-template>
+				<kt-doc-upload  #appDocUpload></kt-doc-upload>
+			</mat-tab>
+            <!-- <mat-tab >
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-medkit"></i>
+					Physician Details
+				</ng-template>
+					<kt-health-physician [disableInput]="isPrint"   [formData]="formId" #appHealthPhysicianDetails></kt-health-physician>
+			</mat-tab>
+            <mat-tab  >
+                <ng-template mat-tab-label>
+                    <i class="mat-tab-label-icon fa fa-exchange-alt"></i>
+                     Register Nurse
+                </ng-template>
+                    <kt-health-register-nurse [disableInput]="isPrint"   [formData]="formId" #appHealthRegisterNurse></kt-health-register-nurse>
+            </mat-tab>
+            <mat-tab  >
+                <ng-template mat-tab-label>
+                    <i class="mat-tab-label-icon fa fa-female"></i>
+                     Research TeamMember
+                </ng-template>
+                    <kt-health-research-teammember [disableInput]="isPrint"   [formData]="formId" #appHealthResearchTeamMember></kt-health-research-teammember>
+            </mat-tab> -->
+			
+
+					 <!-- <mat-tab >
+                        <ng-template mat-tab-label>
+                            <i class="mat-tab-label-icon fa fa-file"></i>Document Upload
+                        </ng-template>
+                        <kt-doc-upload  #appDocUpload></kt-doc-upload>
+                    </mat-tab> -->
+
+		</mat-tab-group>
+	</kt-portlet-body>
+</kt-portlet>

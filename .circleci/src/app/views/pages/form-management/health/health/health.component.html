@@ -1,0 +1,1449 @@
+<kt-portlet>
+	<!-- PORTLET LOADING | Binded to TABLE Datasource -->
+	<!-- See prop => '~/core/_crud/models/data-sources/_base.datasource.ts' (loading$) -->
+	<kt-portlet-header [title]="'Manage CIRA'" [class]="'kt-portlet__head--lg'">
+		<ng-container ktPortletTools  *ngFor="let rights of userRights">
+			<!-- {{rigths.sectionid}} -->
+			<button [routerLink]="['../add']" *ngIf="rights.sectionid === 1" mat-raised-button color="primary" matTooltip="Create CIRA">Add New</button>
+			<!-- Buttons (Material Angular) | See off.documenations 'https://material.angular.io/components/button/overview' -->
+			<!-- mat-raised-button | Rectangular contained button w/ elevation  -->
+		</ng-container>
+	</kt-portlet-header>
+	<!-- end::Header -->
+
+	<!-- start::Body (attribute: ktPortletBody) -->
+	<kt-portlet-body>
+		<!-- start::FILTERS & GROUP ACTIONS -->
+		<div class="kt-form kt-margin-b-30">
+			<!-- start::FILTERS-->
+			<div class="kt-form__filtration">
+					
+			<div  class="form-group">
+                <div  *ngIf="dataList?.length" class="container"  style="background-color: white;margin: unset;max-width: 100%;
+                overflow-x: scroll; 
+                overflow-y:hidden;">
+    
+                    <table class="table" border="">
+                        <tr>
+                            <!--Generate column names ... loop on columns array-->
+                            <th *ngFor="let col of Columns">
+                                {{col}}
+                                </th>
+                        </tr>
+                        <tr *ngFor="let c of dataList">
+      
+                                  <td *ngFor="let col of Columns">{{c[col]}}</td>
+                              </tr>
+                      <!-- <thead>
+                          <tr>
+                            <td>SavedFormID
+                            </td>
+                            <td>ACE-inhibitors
+                            </td>
+                            <td>Perindopril Dose
+                            </td>
+                            <td>Captopril Dose
+                            </td>
+                            <td>Enalapril Dose
+                            </td>
+                            <td>Lisinopril Dose
+                            </td>
+                            <td>ACE Others Dose
+                            </td>
+                            <td>ARBs
+                            </td>
+                            <td>Losartan Dose
+                            </td>
+                            <td>Valsartan Dose
+                            </td>
+                            <td>ARBS Others Dose
+                            </td>
+                            <td>Beta-blockers
+                            </td>
+                            <td>Atenolol Dose
+                            </td>
+                            <td>Bisoprolol Dose
+                            </td>
+                            <td>Beta Others Dose
+                            </td>
+                            <td>Diuretics
+                            </td>
+                            <td>Indapamide Dose
+                            </td>
+                            <td>Hydrochlorothiazide Dose
+                            </td>
+                            <td>Frusemide Dose
+                            </td>
+                            <td>Diuretics Others Dose
+                            </td>
+                            <td>CA Channel Blockers
+                            </td>
+                            <td>Amlodipine Dose
+                            </td>
+                            <td>Nifedipine Dose
+                            </td>
+                            <td>Verapamil Dose
+                            </td>
+                            <td>Cachannel  Other Dose
+                            </td>
+                            <td>Others
+                            </td>
+                            <td>Methyldopa Dose
+                            </td>
+                            <td>Hypertensive Others
+                            </td>
+                            <td>Statins
+                            </td>
+                            <td>Simvastatin Dose
+                            </td>
+                            <td>Atorvastatin Dose
+                            </td>
+                            <td>Rosuvastatin Dose
+                            </td>
+                            <td>Dyslipidemia  Statins Others Dose
+                            </td>
+                            <td>Fibrates
+                            </td>
+                            <td>Anti Dyslipidemia Other
+                            </td>
+                            <td>Gemfibrozil Dose
+                            </td>
+                            <td>Fenofibrate Dose
+                            </td>
+                            <td>Dyslipidemia Others
+                            </td>
+                            <td>Others Dose
+                            </td>
+                            <td>Biguanides
+                            </td>
+                            <td>Metformin Dose
+                            </td>
+                            <td>SUs
+                            </td>
+                            <td>Glibenclamide Dose
+                            </td>
+                            <td>Glimepiride Dose
+                            </td>
+                            <td>Glipizide Dose
+                            </td>
+                            <td>Gliclazide MR Dose
+                            </td>
+                            <td>Glipizide Dose1
+                            </td>
+                            <td>Glimepride Dose
+                            </td>
+                            <td>Thiazolidinediones
+                            </td>
+                            <td>Pioglitazone Dose
+                            </td>
+                            <td>Thiazolidinediones Others Dose
+                            </td>
+                            <td>Meglitinides
+                            </td>
+                            <td>Nateglinide Dose
+                            </td>
+                            <td>Repaglinide Dose
+                            </td>
+                            <td>Dipeptidyl peptidase -IV inhibitors (DPP-IV)
+                            </td>
+                            <td>Sitagliptin Dose
+                            </td>
+                            <td>Vildagliptin Dose
+                            </td>
+                            <td>Saxagliptin Dose
+                            </td>
+                            <td>Linagliptin Dose
+                            </td>
+                            <td>Incretin mimetics (GLP-1 agonist)
+                            </td>
+                            <td>Exenatide Dose
+                            </td>
+                            <td>Liraglutide Dose
+                            </td>
+                            <td>Exenatide (weekly) Dose
+                            </td>
+                            <td>Alpha-glucosidase inhibitors
+                            </td>
+                            <td>Acarbose Dose
+                            </td>
+                            <td>Insulin
+                            </td>
+                            <td>Lispro Dose
+                            </td>
+                            <td>Aspart Dose
+                            </td>
+                            <td>Glulisine Dose
+                            </td>
+                            <td>Regular Dose
+                            </td>
+                            <td>NPH Dose
+                            </td>
+                            <td>Detemir Dose
+                            </td>
+                            <td>Glargine Dose
+                            </td>
+                            <td>Combination Dose
+                            </td>
+                            <td>Insulin Injections
+                            </td>
+                            <td>Vitamin D3
+                            </td>
+                            <td>Others (including erythropoietin injections)
+                            </td>
+                            <td>Prozac
+                            </td>
+                            <td>Anti-Depressants Others
+                            </td>
+                            <td>Diazepam Dose
+                            </td>
+                            <td>Antianxiety Other
+                            </td>
+                            <td>Other Medication
+                            </td>
+                            <td>Traditional Chinese Medicine
+                            </td>
+                            <td>Fasting Glucose Result
+                            </td>
+                            <td>FGL Date of Recent Test
+                            </td>
+                            <td>FGL Result of Recent Test
+                            </td>
+                            <td>FGL Date of Last Test
+                            </td>
+                            <td>FGL Results of the last test
+                            </td>
+                            <td>Is RGL Result Normal?
+                            </td>
+                            <td>RGL Date of Recent Test
+                            </td>
+                            <td>RGL Result of Recent Test
+                            </td>
+                            <td>RGL Date of Last Test
+                            </td>
+                            <td>RGL Results of the last test
+                            </td>
+                            <td>Is OGTT Result Normal?
+                            </td>
+                            <td>OGTT Date of Recent Test
+                            </td>
+                            <td>OGTT Result of Recent Test
+                            </td>
+                            <td>OGTT Date of Last Test
+                            </td>
+                            <td>OGTT Results of the last test
+                            </td>
+                            <td>Is FG2 Result Normal?
+                            </td>
+                            <td>FG2 Date of Recent Test
+                            </td>
+                            <td>FG2 Result of Recent Test
+                            </td>
+                            <td>FG2 Date of Last Test
+                            </td>
+                            <td>FG2 Results of the last test
+                            </td>
+                            <td>Is HBA1C Result Normal?
+                            </td>
+                            <td>HAB1C Date of Recent Test
+                            </td>
+                            <td>HAB1C Result of Recent Test
+                            </td>
+                            <td>HAB1C Date of Last Test
+                            </td>
+                            <td>HAB1C Results of the last test
+                            </td>
+                            <td>Total Cholesterol Result Normal?
+                            </td>
+                            <td>Total Cholesterol Date of Recent Test
+                            </td>
+                            <td>Total Cholesterol Result of Recent Test
+                            </td>
+                            <td>Total Cholesterol Date of Last Test
+                            </td>
+                            <td>Total Cholesterol Results of the last test
+                            </td>
+                            <td>Triglyceride Result Normal?
+                            </td>
+                            <td>Triglyceride Date of Recent Test
+                            </td>
+                            <td>Triglyceride Result of Recent Test
+                            </td>
+                            <td>Triglyceride Date of Last Test
+                            </td>
+                            <td>Triglyceride Results of the last test
+                            </td>
+                            <td>HDL Result Normal?
+                            </td>
+                            <td>HDL Date of Recent Test
+                            </td>
+                            <td>HDL Result of Recent Test
+                            </td>
+                            <td>HDL Date of Last Test
+                            </td>
+                            <td>HDL Results of the last test
+                            </td>
+                            <td>LDL Result Normal?
+                            </td>
+                            <td>LDL Date of Recent Test
+                            </td>
+                            <td>LDL Result of Recent Test
+                            </td>
+                            <td>LDL Date of Last Test
+                            </td>
+                            <td>LDL Results of the last test
+                            </td>
+                            <td>Vitamin-D-Level Result Normal?
+                            </td>
+                            <td>Vitamin-D-Level Date of Recent Test
+                            </td>
+                            <td>Vitamin-D-Level Result of Recent Test
+                            </td>
+                            <td>Vitamin-D-Level Date of Last Test
+                            </td>
+                            <td>Vitamin-D-Level Results of the last test
+                            </td>
+                            <td>Microalbumin Result Normal?
+                            </td>
+                            <td>Microalbumin Date of Recent Test
+                            </td>
+                            <td>Microalbumin Result of Recent Test
+                            </td>
+                            <td>Microalbumin Date of Last Test
+                            </td>
+                            <td>Microalbumin Results of the last test
+                            </td>
+                            <td>Albuminuria Result Normal?
+                            </td>
+                            <td>Albuminuria Date of Recent Test
+                            </td>
+                            <td>Albuminuria Result of Recent Test
+                            </td>
+                            <td>Albuminuria Date of Last Test
+                            </td>
+                            <td>Albuminuria Results of the last test
+                            </td>
+                            <td>Albumin/Creatinine Result Normal?
+                            </td>
+                            <td>Albumin/Creatinine Date of Recent Test
+                            </td>
+                            <td>Albumin/Creatinine Result of Recent Test
+                            </td>
+                            <td>Albumin/Creatinine Date of Last Test
+                            </td>
+                            <td>Albumin/Creatinine Results of the last test
+                            </td>
+                            <td>Creatinine Result Normal?
+                            </td>
+                            <td>Creatinine Date of Recent Test
+                            </td>
+                            <td>Creatinine Result of Recent Test
+                            </td>
+                            <td>Creatinine Date of Last Test
+                            </td>
+                            <td>Creatinine Results of the last test
+                            </td>
+                            <td>eGFR Result Normal?
+                            </td>
+                            <td>eGFR Date of Recent Test
+                            </td>
+                            <td>eGFR Result of Recent Test
+                            </td>
+                            <td>eGFR Date of Last Test
+                            </td>
+                            <td>eGFR Results of the last test
+                            </td>
+                            <td>Serum Sodium Result Normal?
+                            </td>
+                            <td>Serum Sodium Date of Recent Test
+                            </td>
+                            <td>Serum Sodium Result of Recent Test
+                            </td>
+                            <td>Serum Sodium Date of Last Test
+                            </td>
+                            <td>Serum Sodium Results of the last test
+                            </td>
+                            <td>Serum Potassium Result Normal?
+                            </td>
+                            <td>Serum Potassium Date of Recent Test
+                            </td>
+                            <td>Serum Potassium Result of Recent Test
+                            </td>
+                            <td>Serum Potassium Date of Last Test
+                            </td>
+                            <td>Serum Potassium Results of the last test
+                            </td>
+                            <td>Serum Calcium Result Normal?
+                            </td>
+                            <td>Serum Calcium Date of Recent Test
+                            </td>
+                            <td>Serum Calcium Result of Recent Test
+                            </td>
+                            <td>Serum Calcium Date of Last Test
+                            </td>
+                            <td>Serum Calcium Results of the last test
+                            </td>
+                            <td>Serum Magnesium Result Normal?
+                            </td>
+                            <td>Serum Magnesium Date of Recent Test
+                            </td>
+                            <td>Serum Magnesium Result of Recent Test
+                            </td>
+                            <td>Serum Magnesium Date of Last Test
+                            </td>
+                            <td>Serum Magnesium Results of the last test
+                            </td>
+                            <td>Phosphorus Result Normal?
+                            </td>
+                            <td>Phosphorus Date of Recent Test
+                            </td>
+                            <td>Phosphorus Result of Recent Test
+                            </td>
+                            <td>Phosphorus Date of Last Test
+                            </td>
+                            <td>Phosphorus Results of the last test
+                            </td>
+                            <td>Urea Result Normal?
+                            </td>
+                            <td>Urea Date of Recent Test
+                            </td>
+                            <td>Urea Result of Recent Test
+                            </td>
+                            <td>Urea Date of Last Test
+                            </td>
+                            <td>Urea Results of the last test
+                            </td>
+                            <td>Bicarbonate Result Normal?
+                            </td>
+                            <td>Bicarbonate Date of Recent Test
+                            </td>
+                            <td>Bicarbonate Result of Recent Test
+                            </td>
+                            <td>Bicarbonate Date of Last Test
+                            </td>
+                            <td>Bicarbonate Results of the last test
+                            </td>
+                            <td>ALT Result Normal?
+                            </td>
+                            <td>ALT Date of Recent Test
+                            </td>
+                            <td>ALT Result of Recent Test
+                            </td>
+                            <td>ALT Date of Last Test
+                            </td>
+                            <td>ALT Results of the last test
+                            </td>
+                            <td>ALP Result Normal?
+                            </td>
+                            <td>ALP Date of Recent Test
+                            </td>
+                            <td>ALP Result of Recent Test
+                            </td>
+                            <td>ALP Date of Last Test
+                            </td>
+                            <td>ALP Results of the last test
+                            </td>
+                            <td>AST Result Normal?
+                            </td>
+                            <td>AST Date of Recent Test
+                            </td>
+                            <td>AST Result of Recent Test
+                            </td>
+                            <td>AST Date of Last Test
+                            </td>
+                            <td>AST Results of the last test
+                            </td>
+                            <td>Bilirubin Result Normal?
+                            </td>
+                            <td>Bilirubin Date of Recent Test
+                            </td>
+                            <td>Bilirubin Result of Recent Test
+                            </td>
+                            <td>Bilirubin Date of Last Test
+                            </td>
+                            <td>Bilirubin Results of the last test
+                            </td>
+                            <td>Total Protein Result Normal?
+                            </td>
+                            <td>Total Protein Date of Recent Test
+                            </td>
+                            <td>Total Protein Result of Recent Test
+                            </td>
+                            <td>Total Protein Date of Last Test
+                            </td>
+                            <td>Total Protein Results of the last test
+                            </td>
+                            <td>Serum Albumin Result Normal?
+                            </td>
+                            <td>Serum Albumin Date of Recent Test
+                            </td>
+                            <td>Serum Albumin Result of Recent Test
+                            </td>
+                            <td>Serum Albumin Date of Last Test
+                            </td>
+                            <td>Serum Albumin Results of the last test
+                            </td>
+                            <td>C-reactive Protein Result Normal?
+                            </td>
+                            <td>C-reactive Protein Date of Recent Test
+                            </td>
+                            <td>C-reactive Protein Result of Recent Test
+                            </td>
+                            <td>C-reactive Protein Date of Last Test
+                            </td>
+                            <td>C-reactive Protein Results of the last test
+                            </td>
+                            <td>T3 Result Normal?
+                            </td>
+                            <td>T3 Date of Recent Test
+                            </td>
+                            <td>T3 Result of Recent Test
+                            </td>
+                            <td>T3 Date of Last Test
+                            </td>
+                            <td>T3 Results of the last test
+                            </td>
+                            <td>T4 Result Normal?
+                            </td>
+                            <td>T4 Date of Recent Test
+                            </td>
+                            <td>T4 Result of Recent Test
+                            </td>
+                            <td>T4 Date of Last Test
+                            </td>
+                            <td>T4 Results of the last test
+                            </td>
+                            <td>Free T4 Result Normal?
+                            </td>
+                            <td>Free T4 Date of Recent Test
+                            </td>
+                            <td>Free T4 Result of Recent Test
+                            </td>
+                            <td>Free T4 Date of Last Test
+                            </td>
+                            <td>Free T4 Results of the last test
+                            </td>
+                            <td>TSH Result Normal?
+                            </td>
+                            <td>TSH Date of Recent Test
+                            </td>
+                            <td>TSH Result of Recent Test
+                            </td>
+                            <td>TSH Date of Last Test
+                            </td>
+                            <td>TSH Results of the last test
+                            </td>
+                            <td>Parathyroid Hormone Result Normal?
+                            </td>
+                            <td>Parathyroid Hormone Date of Recent Test
+                            </td>
+                            <td>Parathyroid Hormone Result of Recent Test
+                            </td>
+                            <td>Parathyroid Hormone Date of Last Test
+                            </td>
+                            <td>Parathyroid Hormone Results of the last test
+                            </td>
+                            <td>WBC Count Result Normal?
+                            </td>
+                            <td>WBC Count Date of Recent Test
+                            </td>
+                            <td>WBC Count Result of Recent Test
+                            </td>
+                            <td>WBC Count Date of Last Test
+                            </td>
+                            <td>WBC Count Results of the last test
+                            </td>
+                            <td>WBC Differential Result Normal?
+                            </td>
+                            <td>WBC Differential Date of Recent Test
+                            </td>
+                            <td>WBC Differential Result of Recent Test
+                            </td>
+                            <td>WBC Differential Date of Last Test
+                            </td>
+                            <td>WBC Differential Results of the last test
+                            </td>
+                            <td>RBC Count Result Normal?
+                            </td>
+                            <td>RBC Count Date of Recent Test
+                            </td>
+                            <td>RBC Count Result of Recent Test
+                            </td>
+                            <td>RBC Count Date of Last Test
+                            </td>
+                            <td>RBC Count Results of the last test
+                            </td>
+                            <td>Haemoglobin Result Normal?
+                            </td>
+                            <td>Haemoglobin Date of Recent Test
+                            </td>
+                            <td>Haemoglobin Result of Recent Test
+                            </td>
+                            <td>Haemoglobin Date of Last Test
+                            </td>
+                            <td>Haemoglobin Results of the last test
+                            </td>
+                            <td>Haematocrit Result Normal?
+                            </td>
+                            <td>Haematocrit Date of Recent Test
+                            </td>
+                            <td>Haematocrit Result of Recent Test
+                            </td>
+                            <td>Haematocrit Date of Last Test
+                            </td>
+                            <td>Haematocrit Results of the last test
+                            </td>
+                            <td>Ferritin Result Normal?
+                            </td>
+                            <td>Ferritin Date of Recent Test
+                            </td>
+                            <td>Ferritin Result of Recent Test
+                            </td>
+                            <td>Ferritin Date of Last Test
+                            </td>
+                            <td>Ferritin Results of the last test
+                            </td>
+                            <td>RDW Count Result Normal?
+                            </td>
+                            <td>RDW Count Date of Recent Test
+                            </td>
+                            <td>RDW Count Result of Recent Test
+                            </td>
+                            <td>RDW Count Date of Last Test
+                            </td>
+                            <td>RDW Count Results of the last test
+                            </td>
+                            <td>MCV Result Normal?
+                            </td>
+                            <td>MCV Date of Recent Test
+                            </td>
+                            <td>MCV Result of Recent Test
+                            </td>
+                            <td>MCV Date of Last Test
+                            </td>
+                            <td>MCV Results of the last test
+                            </td>
+                            <td>MCH Result Normal?
+                            </td>
+                            <td>MCH Date of Recent Test
+                            </td>
+                            <td>MCH Result of Recent Test
+                            </td>
+                            <td>MCH Date of Last Test
+                            </td>
+                            <td>MCH Results of the last test
+                            </td>
+                            <td>MCHC Result Normal?
+                            </td>
+                            <td>MCHC Date of Recent Test
+                            </td>
+                            <td>MCHC Result of Recent Test
+                            </td>
+                            <td>MCHC Date of Last Test
+                            </td>
+                            <td>MCHC Results of the last test
+                            </td>
+                            <td>Reticulocyte Result Normal?
+                            </td>
+                            <td>Date of Recent Test
+                            </td>
+                            <td>Reticulocyte Result of Recent Test
+                            </td>
+                            <td>Reticulocyte Date of Last Test
+                            </td>
+                            <td>Reticulocyte Results of the last test
+                            </td>
+                            <td>Platelet Result Normal?
+                            </td>
+                            <td>Platelet Date of Recent Test
+                            </td>
+                            <td>Platelet Result of Recent Test
+                            </td>
+                            <td>Platelet Date of Last Test
+                            </td>
+                            <td>Platelet Results of the last test
+                            </td>
+                            <td>MPV Result Normal?
+                            </td>
+                            <td>MPV Date of Recent Test
+                            </td>
+                            <td>MPV Result of Recent Test
+                            </td>
+                            <td>MPV Date of Last Test
+                            </td>
+                            <td>MPV Results of the last test
+                            </td>
+                            <td>UTS Macroscopic Result
+                            </td>
+                            <td>UTS Macroscopic Recent Date
+                            </td>
+                            <td>UTS Macroscopic Recent Result
+                            </td>
+                            <td>UTS Macroscopic Last Date
+                            </td>
+                            <td>UTS Macroscopic Last Result
+                            </td>
+                            <td>UTSpH Result Normal?
+                            </td>
+                            <td>UTSpH Date of Recent Test
+                            </td>
+                            <td>UTSpH Result of Recent Test
+                            </td>
+                            <td>Date of Last Test
+                            </td>
+                            <td>UTSpH Results of the last test
+                            </td>
+                            <td>UTS Glucose Result Normal?
+                            </td>
+                            <td>UTS Glucose Date of Recent Test
+                            </td>
+                            <td>UTS Glucose Result of Recent Test
+                            </td>
+                            <td>UTS Glucose Date of Last Test
+                            </td>
+                            <td>UTS Glucose Results of the last test
+                            </td>
+                            <td>UTS Gravity Result Normal?
+                            </td>
+                            <td>UTS Gravity Date of Recent Test
+                            </td>
+                            <td>UTS Gravity Result of Recent Test
+                            </td>
+                            <td>UTS Gravity Date of Last Test
+                            </td>
+                            <td>UTS Gravity Results of the last test
+                            </td>
+                            <td>UTS Nitrate Result Normal?
+                            </td>
+                            <td>UTS Nitrate Date of Recent Test
+                            </td>
+                            <td>UTS Nitrate Result of Recent Test
+                            </td>
+                            <td>UTS Nitrate Date of Last Test
+                            </td>
+                            <td>UTS Nitrate Results of the last test
+                            </td>
+                            <td>UTS Leukocyte Result Normal?
+                            </td>
+                            <td>UTS Leukocyte Date of Recent Test
+                            </td>
+                            <td>UTS Leukocyte Result of Recent Test
+                            </td>
+                            <td>UTS Leukocyte Date of Last Test
+                            </td>
+                            <td>UTS Leukocyte Results of the last test
+                            </td>
+                            <td>UTS Microscopy Cell Result Normal?
+                            </td>
+                            <td>UTS Microscopy Cell Date of Recent Test
+                            </td>
+                            <td>UTS Microscopy Cell Result of Recent Test
+                            </td>
+                            <td>UTS Microscopy Cell Date of Last Test
+                            </td>
+                            <td>UTS Microscopy Cell Results of the last test
+                            </td>
+                            <td>UTS Microscopy CASTS Result Normal?
+                            </td>
+                            <td>UTS Microscopy CASTS Date of Recent Test
+                            </td>
+                            <td>UTS Microscopy CASTS Result of Recent Test
+                            </td>
+                            <td>UTS Microscopy CASTS Date of Last Test
+                            </td>
+                            <td>UTS Microscopy CASTS Results of the last test
+                            </td>
+                            <td>UTS Microscopy Crystals Result Normal?
+                            </td>
+                            <td>UTS Microscopy Crystals Date of Recent Test
+                            </td>
+                            <td>UTS Microscopy Crystals Result of Recent Test
+                            </td>
+                            <td>UTS Microscopy Crystals Date of Last Test
+                            </td>
+                            <td>UTS Microscopy Crystals Results of the last test
+                            </td>
+                            <td>OA Other
+                            </td>
+                            <td>Other Pramlintide
+                            </td>
+                            <td>OA Other Dose
+                            </td>
+                            <td>Anti Dyslipidemia Statins Dose
+                            </td>
+                            <td>Anti Dyslipidemia Other Dose
+                            </td>
+                            <td>Agents Thiazolidinediones Dose
+                            </td>
+                            <td>SUs Dose
+                            </td>
+                            <td>FBG Date of Recent Test
+                            </td>
+                            <td>FBG Result of Recent Test
+                            </td>
+                            <td>FBG Date of Last Test
+                            </td>
+                            <td>FBG Results of the last test
+                            </td>
+                            <td>Is FBG Result Normal?
+                            </td>
+                            <td>Ace Inhibitors Dose
+                            </td>
+                            <td>Others Agents Dose
+                            </td>
+                            <td>Hypertensive Others Dose
+                            </td>
+                            <td>Cachannel Blocker Dose
+                            </td>
+                            <td>Diuretics Dose
+                            </td>
+                            <td>Beta Blocker Dose
+                            </td>
+                            <td>ARBS Dose
+                            </td>
+                            <td>Fibrates Dose
+                            </td>
+                          </tr>
+                                       
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let record of dataList">
+                          
+							<td> {{ record.savedFormID ? record.savedFormID : '' }} </td>
+                       
+                            <td> {{ record.anti_hypertensive_ace_inhibitors ? record.anti_hypertensive_ace_inhibitors : '' }} </td>
+                        	<td> {{ record.anti_hypertensive_ace_inhibitors_perindopril? record.anti_hypertensive_ace_inhibitors_perindopril : '' }}
+                        </td>
+                        <td> {{ record.anti_hypertensive_ace_inhibitors_captopril? record.anti_hypertensive_ace_inhibitors_captopril : '' }}
+                        </td>
+                        <td> {{ record.anti_hypertensive_ace_inhibitors_enalapril? record.anti_hypertensive_ace_inhibitors_enalapril : '' }}
+                        </td>
+                        <td> {{ record.anti_hypertensive_ace_inhibitors_lisinopril? record.anti_hypertensive_ace_inhibitors_lisinopril : '' }}
+                        </td>
+                        <td> {{ record.anti_hypertensive_ace_inhibitors_other? record.anti_hypertensive_ace_inhibitors_other : '' }} </td>
+                        <td> {{ record.anti_hypertensive_arbs? record.anti_hypertensive_arbs : '' }} </td>
+                        <td> {{ record.anti_hypertensive_arbs_losartan? record.anti_hypertensive_arbs_losartan : '' }} </td>
+                        <td> {{ record.anti_hypertensive_arbs_valsartan? record.anti_hypertensive_arbs_valsartan : '' }} </td>
+                        <td> {{ record.anti_hypertensive_arbs_other? record.anti_hypertensive_arbs_other : '' }} </td>
+                        <td> {{ record.anti_hypertensive_beta_blockers ? record.anti_hypertensive_beta_blockers : '' }} </td>
+                        <td> {{ record.anti_hypertensive_beta_blockers_atenolol? record.anti_hypertensive_beta_blockers_atenolol : '' }} </td>
+                        <td> {{ record.anti_hypertensive_beta_blockers_bisoprolol? record.anti_hypertensive_beta_blockers_bisoprolol : '' }}
+                        </td>
+                        <td> {{ record.anti_hypertensive_beta_blockers_other? record.anti_hypertensive_beta_blockers_other : '' }} </td>
+                        <td> {{ record.anti_hypertensive_diuretics? record.anti_hypertensive_diuretics : '' }} </td>
+                        <td> {{ record.anti_hypertensive_diuretics_indapamide? record.anti_hypertensive_diuretics_indapamide : '' }} </td>
+                        <td> {{ record.anti_hypertensive_diuretics_hydrochlorothiazide? record.anti_hypertensive_diuretics_hydrochlorothiazide :
+                            '' }} </td>
+                        <td> {{ record.anti_hypertensive_diuretics_frusemide? record.anti_hypertensive_diuretics_frusemide : '' }} </td>
+                        <td> {{ record.anti_hypertensive_diuretics_other? record.anti_hypertensive_diuretics_other : '' }} </td>
+                        <td> {{ record.anti_hypertensive_cachannel_blockers? record.anti_hypertensive_cachannel_blockers : '' }} </td>
+                        <td> {{ record.anti_hypertensive_cachannel_blockers_amlodipine? record.anti_hypertensive_cachannel_blockers_amlodipine :
+                            '' }} </td>
+                        <td> {{ record.anti_hypertensive_cachannel_blockers_nifedipine? record.anti_hypertensive_cachannel_blockers_nifedipine :
+                            '' }} </td>
+                        <td> {{ record.anti_hypertensive_cachannel_blockers_verapamil? record.anti_hypertensive_cachannel_blockers_verapamil :
+                            '' }} </td>
+                        <td> {{ record.anti_hypertensive_cachannel_blockers_other? record.anti_hypertensive_cachannel_blockers_other : '' }}
+                        </td>
+                        <td> {{ record.anti_hypertensive_other? record.anti_hypertensive_other : '' }} </td>
+                        <td> {{ record.anti_hypertensive_methyldopa? record.anti_hypertensive_methyldopa : '' }} </td>
+                        <td> {{ record.anti_hypertensive_other_other? record.anti_hypertensive_other_other : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_statins? record.anti_dyslipidemia_statins : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_statins_simvastatin? record.anti_dyslipidemia_statins_simvastatin : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_statins_atorvastatin? record.anti_dyslipidemia_statins_atorvastatin : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_statins_rosuvastatin? record.anti_dyslipidemia_statins_rosuvastatin : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_statins_other? record.anti_dyslipidemia_statins_other : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_fibrates? record.anti_dyslipidemia_fibrates : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_fibrates_other? record.anti_dyslipidemia_fibrates_other : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_fibrates_gemfibrozil? record.anti_dyslipidemia_fibrates_gemfibrozil : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_fibrates_fenofibrate? record.anti_dyslipidemia_fibrates_fenofibrate : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_other? record.anti_dyslipidemia_other : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_other_other? record.anti_dyslipidemia_other_other : '' }} </td>
+                        <td> {{ record.oral_agents_biguanides? record.oral_agents_biguanides : '' }} </td>
+                        <td> {{ record.oral_agents_biguanides_metformin? record.oral_agents_biguanides_metformin : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas? record.oral_agents_sulphonyureas : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_glibenclamide? record.oral_agents_sulphonyureas_glibenclamide : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_glimepiride? record.oral_agents_sulphonyureas_glimepiride : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_glipizide? record.oral_agents_sulphonyureas_glipizide : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_gliclazidemr? record.oral_agents_sulphonyureas_gliclazidemr : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_glipizide1? record.oral_agents_sulphonyureas_glipizide1 : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_glimepride? record.oral_agents_sulphonyureas_glimepride : '' }} </td>
+                        <td> {{ record.oral_agents_thiazolidinediones? record.oral_agents_thiazolidinediones : '' }} </td>
+                        <td> {{ record.oral_agents_thiazolidinediones_pioglitazone? record.oral_agents_thiazolidinediones_pioglitazone : '' }}
+                        </td>
+                        <td> {{ record.oral_agents_thiazolidinediones_other? record.oral_agents_thiazolidinediones_other : '' }} </td>
+                        <td> {{ record.oral_agents_meglitinides? record.oral_agents_meglitinides : '' }} </td>
+                        <td> {{ record.oral_agents_meglitinides_nateglinide? record.oral_agents_meglitinides_nateglinide : '' }} </td>
+                        <td> {{ record.oral_agents_meglitinides_repaglinide? record.oral_agents_meglitinides_repaglinide : '' }} </td>
+                        <td> {{ record.oral_agents_dipeptidyl? record.oral_agents_dipeptidyl : '' }} </td>
+                        <td> {{ record.oral_agents_dipeptidyl_sitagliptin? record.oral_agents_dipeptidyl_sitagliptin : '' }} </td>
+                        <td> {{ record.oral_agents_dipeptidyl_vildagliptin? record.oral_agents_dipeptidyl_vildagliptin : '' }} </td>
+                        <td> {{ record.oral_agents_dipeptidyl_saxagliptin? record.oral_agents_dipeptidyl_saxagliptin : '' }} </td>
+                        <td> {{ record.oral_agents_dipeptidyl_linagliptin? record.oral_agents_dipeptidyl_linagliptin : '' }} </td>
+                        <td> {{ record.oral_agents_incretin? record.oral_agents_incretin : '' }} </td>
+                        <td> {{ record.oral_agents_incretin_exenatide? record.oral_agents_incretin_exenatide : '' }} </td>
+                        <td> {{ record.oral_agents_incretin_liraglutide? record.oral_agents_incretin_liraglutide : '' }} </td>
+                        <td> {{ record.oral_agents_incretin_exenatide_weekly? record.oral_agents_incretin_exenatide_weekly : '' }} </td>
+                        <td> {{ record.oral_agents_alpha_glucosidase_inhibitors? record.oral_agents_alpha_glucosidase_inhibitors : '' }} </td>
+                        <td> {{ record.oral_agents_alpha_glucosidase_inhibitors_acarbose? record.oral_agents_alpha_glucosidase_inhibitors_acarbose
+                            : '' }} </td>
+                        <td> {{ record.injections_insulin? record.injections_insulin : '' }} </td>
+                        <td> {{ record.injections_insulin_lispro? record.injections_insulin_lispro : '' }} </td>
+                        <td> {{ record.injections_insulin_aspart? record.injections_insulin_aspart : '' }} </td>
+                        <td> {{ record.injections_insulin_glulisine? record.injections_insulin_glulisine : '' }} </td>
+                        <td> {{ record.injections_insulin_regular? record.injections_insulin_regular : '' }} </td>
+                        <td> {{ record.injections_insulin_nph? record.injections_insulin_nph : '' }} </td>
+                        <td> {{ record.injections_insulin_detemir? record.injections_insulin_detemir : '' }} </td>
+                        <td> {{ record.injections_insulin_glargine? record.injections_insulin_glargine : '' }} </td>
+                        <td> {{ record.injections_insulin_combination? record.injections_insulin_combination : '' }} </td>
+                        <td> {{ record.injections_insulin_other? record.injections_insulin_other : '' }} </td>
+                        <td> {{ record.supplements_vitamind3? record.supplements_vitamind3 : '' }} </td>
+                        <td> {{ record.supplements_others? record.supplements_others : '' }} </td>
+                        <td> {{ record.antidepressants_prozac? record.antidepressants_prozac : '' }} </td>
+                        <td> {{ record.antidepressants_other? record.antidepressants_other : '' }} </td>
+                        <td> {{ record.antianxiety_diazepam? record.antianxiety_diazepam : '' }} </td>
+                        <td> {{ record.antianxiety_other? record.antianxiety_other : '' }} </td>
+                        <td> {{ record.othermedication_other? record.othermedication_other : '' }} </td>
+                        <td> {{ record.traditional_chinese_specify? record.traditional_chinese_specify : '' }} </td>
+                        <td> {{ record.bio_fastingglucose_result_normal? record.bio_fastingglucose_result_normal : '' }} </td>
+                        <td> {{ record.bio_fastingglucose_date_of_recent_test? record.bio_fastingglucose_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_fastingglucose_result_of_recent_test? record.bio_fastingglucose_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_fastingglucose_date_of_last_test? record.bio_fastingglucose_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_fastingglucose_result_of_last_test? record.bio_fastingglucose_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_randomglucose_result_normal? record.bio_randomglucose_result_normal : '' }} </td>
+                        <td> {{ record.bio_randomglucose_date_of_recent_test? record.bio_randomglucose_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_randomglucose_result_of_recent_test? record.bio_randomglucose_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_randomglucose_date_of_last_test? record.bio_randomglucose_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_randomglucose_result_of_last_test? record.bio_randomglucose_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ogtt_result_normal? record.bio_ogtt_result_normal : '' }} </td>
+                        <td> {{ record.bio_ogtt_date_of_recent_test? record.bio_ogtt_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ogtt_result_of_recent_test? record.bio_ogtt_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ogtt_date_of_last_test? record.bio_ogtt_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ogtt_result_of_last_test? record.bio_ogtt_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_fg2_result_normal? record.bio_fg2_result_normal : '' }} </td>
+                        <td> {{ record.bio_fg2_date_of_recent_test? record.bio_fg2_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_fg2_result_of_recent_test? record.bio_fg2_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_fg2_date_of_last_test? record.bio_fg2_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_fg2_result_of_last_test? record.bio_fg2_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_hba1c_result_normal? record.bio_hba1c_result_normal : '' }} </td>
+                        <td> {{ record.bio_hba1c_date_of_recent_test? record.bio_hba1c_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_hba1c_result_of_recent_test? record.bio_hba1c_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_hba1c_date_of_last_test? record.bio_hba1c_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_hba1c_result_of_last_test? record.bio_hba1c_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_totalcholesterol_result_normal? record.bio_totalcholesterol_result_normal : '' }} </td>
+                        <td> {{ record.bio_totalcholesterol_date_of_recent_test? record.bio_totalcholesterol_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_totalcholesterol_result_of_recent_test? record.bio_totalcholesterol_result_of_recent_test : '' }}
+                        </td>
+                        <td> {{ record.bio_totalcholesterol_date_of_last_test? record.bio_totalcholesterol_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_totalcholesterol_result_of_last_test? record.bio_totalcholesterol_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_triglyceride_result_normal? record.bio_triglyceride_result_normal : '' }} </td>
+                        <td> {{ record.bio_triglyceride_date_of_recent_test? record.bio_triglyceride_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_triglyceride_result_of_recent_test? record.bio_triglyceride_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_triglyceride_date_of_last_test? record.bio_triglyceride_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_triglyceride_result_of_last_test? record.bio_triglyceride_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_hdl_result_normal? record.bio_hdl_result_normal : '' }} </td>
+                        <td> {{ record.bio_hdl_date_of_recent_test? record.bio_hdl_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_hdl_result_of_recent_test? record.bio_hdl_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_hdl_date_of_last_test? record.bio_hdl_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_hdl_result_of_last_test? record.bio_hdl_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ldl_result_normal? record.bio_ldl_result_normal : '' }} </td>
+                        <td> {{ record.bio_ldl_date_of_recent_test? record.bio_ldl_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ldl_result_of_recent_test? record.bio_ldl_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ldl_date_of_last_test? record.bio_ldl_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ldl_result_of_last_test? record.bio_ldl_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_vitamindlevel_result_normal? record.bio_vitamindlevel_result_normal : '' }} </td>
+                        <td> {{ record.bio_vitamindlevel_date_of_recent_test? record.bio_vitamindlevel_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_vitamindlevel_result_of_recent_test? record.bio_vitamindlevel_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_vitamindlevel_date_of_last_test? record.bio_vitamindlevel_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_vitamindlevel_result_of_last_test? record.bio_vitamindlevel_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_microalbumin_result_normal? record.bio_microalbumin_result_normal : '' }} </td>
+                        <td> {{ record.bio_microalbumin_date_of_recent_test? record.bio_microalbumin_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_microalbumin_result_of_recent_test? record.bio_microalbumin_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_microalbumin_date_of_last_test? record.bio_microalbumin_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_microalbumin_result_of_last_test? record.bio_microalbumin_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_albuminuria_result_normal? record.bio_albuminuria_result_normal : '' }} </td>
+                        <td> {{ record.bio_albuminuria_date_of_recent_test? record.bio_albuminuria_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_albuminuria_result_of_recent_test? record.bio_albuminuria_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_albuminuria_date_of_last_test? record.bio_albuminuria_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_albuminuria_result_of_last_test? record.bio_albuminuria_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_albumincreatinine_result_normal? record.bio_albumincreatinine_result_normal : '' }} </td>
+                        <td> {{ record.bio_albumincreatinine_date_of_recent_test? record.bio_albumincreatinine_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_albumincreatinine_result_of_recent_test? record.bio_albumincreatinine_result_of_recent_test : '' }}
+                        </td>
+                        <td> {{ record.bio_albumincreatinine_date_of_last_test? record.bio_albumincreatinine_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_albumincreatinine_result_of_last_test? record.bio_albumincreatinine_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_creatinine_result_normal? record.bio_creatinine_result_normal : '' }} </td>
+                        <td> {{ record.bio_creatinine_date_of_recent_test? record.bio_creatinine_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_creatinine_result_of_recent_test? record.bio_creatinine_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_creatinine_date_of_last_test? record.bio_creatinine_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_creatinine_result_of_last_test? record.bio_creatinine_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_egfr_result_normal? record.bio_egfr_result_normal : '' }} </td>
+                        <td> {{ record.bio_egfr_date_of_recent_test? record.bio_egfr_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_egfr_result_of_recent_test? record.bio_egfr_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_egfr_date_of_last_test? record.bio_egfr_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_egfr_result_of_last_test? record.bio_egfr_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_sodium_result_normal? record.bio_sodium_result_normal : '' }} </td>
+                        <td> {{ record.bio_sodium_date_of_recent_test? record.bio_sodium_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_sodium_result_of_recent_test? record.bio_sodium_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_sodium_date_of_last_test? record.bio_sodium_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_sodium_result_of_last_test? record.bio_sodium_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_potassium_result_normal? record.bio_potassium_result_normal : '' }} </td>
+                        <td> {{ record.bio_potassium_date_of_recent_test? record.bio_potassium_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_potassium_result_of_recent_test? record.bio_potassium_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_potassium_date_of_last_test? record.bio_potassium_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_potassium_result_of_last_test? record.bio_potassium_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_calcium_result_normal? record.bio_calcium_result_normal : '' }} </td>
+                        <td> {{ record.bio_calcium_date_of_recent_test? record.bio_calcium_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_calcium_result_of_recent_test? record.bio_calcium_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_calcium_date_of_last_test? record.bio_calcium_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_calcium_result_of_last_test? record.bio_calcium_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_magnesium_result_normal? record.bio_magnesium_result_normal : '' }} </td>
+                        <td> {{ record.bio_magnesium_date_of_recent_test? record.bio_magnesium_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_magnesium_result_of_recent_test? record.bio_magnesium_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_magnesium_date_of_last_test? record.bio_magnesium_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_magnesium_result_of_last_test? record.bio_magnesium_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_phosphorus_result_normal? record.bio_phosphorus_result_normal : '' }} </td>
+                        <td> {{ record.bio_phosphorus_date_of_recent_test? record.bio_phosphorus_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_phosphorus_result_of_recent_test? record.bio_phosphorus_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_phosphorus_date_of_last_test? record.bio_phosphorus_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_phosphorus_result_of_last_test? record.bio_phosphorus_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_urea_result_normal? record.bio_urea_result_normal : '' }} </td>
+                        <td> {{ record.bio_urea_date_of_recent_test? record.bio_urea_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_urea_result_of_recent_test? record.bio_urea_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_urea_date_of_last_test? record.bio_urea_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_urea_result_of_last_test? record.bio_urea_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_bicarbonate_result_normal? record.bio_bicarbonate_result_normal : '' }} </td>
+                        <td> {{ record.bio_bicarbonate_date_of_recent_test? record.bio_bicarbonate_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_bicarbonate_result_of_recent_test? record.bio_bicarbonate_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_bicarbonate_date_of_last_test? record.bio_bicarbonate_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_bicarbonate_result_of_last_test? record.bio_bicarbonate_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_alt_result_normal? record.bio_alt_result_normal : '' }} </td>
+                        <td> {{ record.bio_alt_date_of_recent_test? record.bio_alt_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_alt_result_of_recent_test? record.bio_alt_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_alt_date_of_last_test? record.bio_alt_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_alt_result_of_last_test? record.bio_alt_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_alp_result_normal? record.bio_alp_result_normal : '' }} </td>
+                        <td> {{ record.bio_alp_date_of_recent_test? record.bio_alp_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_alp_result_of_recent_test? record.bio_alp_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_alp_date_of_last_test? record.bio_alp_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_alp_result_of_last_test? record.bio_alp_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ast_result_normal? record.bio_ast_result_normal : '' }} </td>
+                        <td> {{ record.bio_ast_date_of_recent_test? record.bio_ast_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ast_result_of_recent_test? record.bio_ast_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ast_date_of_last_test? record.bio_ast_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ast_result_of_last_test? record.bio_ast_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_bilirubin_result_normal? record.bio_bilirubin_result_normal : '' }} </td>
+                        <td> {{ record.bio_bilirubin_date_of_recent_test? record.bio_bilirubin_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_bilirubin_result_of_recent_test? record.bio_bilirubin_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_bilirubin_date_of_last_test? record.bio_bilirubin_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_bilirubin_result_of_last_test? record.bio_bilirubin_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_protein_result_normal? record.bio_protein_result_normal : '' }} </td>
+                        <td> {{ record.bio_protein_date_of_recent_test? record.bio_protein_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_protein_result_of_recent_test? record.bio_protein_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_protein_date_of_last_test? record.bio_protein_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_protein_result_of_last_test? record.bio_protein_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_serum_albumin_result_normal? record.bio_serum_albumin_result_normal : '' }} </td>
+                        <td> {{ record.bio_serum_albumin_date_of_recent_test? record.bio_serum_albumin_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_serum_albumin_result_of_recent_test? record.bio_serum_albumin_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_serum_albumin_date_of_last_test? record.bio_serum_albumin_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_serum_albumin_result_of_last_test? record.bio_serum_albumin_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_cprotein_result_normal? record.bio_cprotein_result_normal : '' }} </td>
+                        <td> {{ record.bio_cprotein_date_of_recent_test? record.bio_cprotein_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_cprotein_result_of_recent_test? record.bio_cprotein_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_cprotein_date_of_last_test? record.bio_cprotein_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_cprotein_result_of_last_test? record.bio_cprotein_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_t3_result_normal? record.bio_t3_result_normal : '' }} </td>
+                        <td> {{ record.bio_t3_date_of_recent_test? record.bio_t3_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_t3_result_of_recent_test? record.bio_t3_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_t3_date_of_last_test? record.bio_t3_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_t3_result_of_last_test? record.bio_t3_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_t4_result_normal? record.bio_t4_result_normal : '' }} </td>
+                        <td> {{ record.bio_t4_date_of_recent_test? record.bio_t4_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_t4_result_of_recent_test? record.bio_t4_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_t4_date_of_last_test? record.bio_t4_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_t4_result_of_last_test? record.bio_t4_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_freet4_result_normal? record.bio_freet4_result_normal : '' }} </td>
+                        <td> {{ record.bio_freet4_date_of_recent_test? record.bio_freet4_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_freet4_result_of_recent_test? record.bio_freet4_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_freet4_date_of_last_test? record.bio_freet4_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_freet4_result_of_last_test? record.bio_freet4_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_tsh_result_normal? record.bio_tsh_result_normal : '' }} </td>
+                        <td> {{ record.bio_tsh_date_of_recent_test? record.bio_tsh_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_tsh_result_of_recent_test? record.bio_tsh_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_tsh_date_of_last_test? record.bio_tsh_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_tsh_result_of_last_test? record.bio_tsh_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_parathyroid_result_normal? record.bio_parathyroid_result_normal : '' }} </td>
+                        <td> {{ record.bio_parathyroid_date_of_recent_test? record.bio_parathyroid_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_parathyroid_result_of_recent_test? record.bio_parathyroid_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_parathyroid_date_of_last_test? record.bio_parathyroid_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_parathyroid_result_of_last_test? record.bio_parathyroid_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_wbc_count_result_normal? record.bio_wbc_count_result_normal : '' }} </td>
+                        <td> {{ record.bio_wbc_count_date_of_recent_test? record.bio_wbc_count_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_wbc_count_result_of_recent_test? record.bio_wbc_count_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_wbc_count_date_of_last_test? record.bio_wbc_count_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_wbc_count_result_of_last_test? record.bio_wbc_count_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_wbc_diffcount_result_normal? record.bio_wbc_diffcount_result_normal : '' }} </td>
+                        <td> {{ record.bio_wbc_diffcount_date_of_recent_test? record.bio_wbc_diffcount_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_wbc_diffcount_result_of_recent_test? record.bio_wbc_diffcount_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_wbc_diffcount_date_of_last_test? record.bio_wbc_diffcount_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_wbc_diffcount_result_of_last_test? record.bio_wbc_diffcount_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_rbc_count_result_normal? record.bio_rbc_count_result_normal : '' }} </td>
+                        <td> {{ record.bio_rbc_count_date_of_recent_test? record.bio_rbc_count_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_rbc_count_result_of_recent_test? record.bio_rbc_count_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_rbc_count_date_of_last_test? record.bio_rbc_count_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_rbc_count_result_of_last_test? record.bio_rbc_count_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_haemoglobin_count_result_normal? record.bio_haemoglobin_count_result_normal : '' }} </td>
+                        <td> {{ record.bio_haemoglobin_count_date_of_recent_test? record.bio_haemoglobin_count_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_haemoglobin_count_result_of_recent_test? record.bio_haemoglobin_count_result_of_recent_test : '' }}
+                        </td>
+                        <td> {{ record.bio_haemoglobin_count_date_of_last_test? record.bio_haemoglobin_count_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_haemoglobin_count_result_of_last_test? record.bio_haemoglobin_count_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_haematocrit_count_result_normal? record.bio_haematocrit_count_result_normal : '' }} </td>
+                        <td> {{ record.bio_haematocrit_count_date_of_recent_test? record.bio_haematocrit_count_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_haematocrit_count_result_of_recent_test? record.bio_haematocrit_count_result_of_recent_test : '' }}
+                        </td>
+                        <td> {{ record.bio_haematocrit_count_date_of_last_test? record.bio_haematocrit_count_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_haematocrit_count_result_of_last_test? record.bio_haematocrit_count_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ferritin_count_result_normal? record.bio_ferritin_count_result_normal : '' }} </td>
+                        <td> {{ record.bio_ferritin_count_date_of_recent_test? record.bio_ferritin_count_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ferritin_count_result_of_recent_test? record.bio_ferritin_count_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_ferritin_count_date_of_last_test? record.bio_ferritin_count_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_ferritin_count_result_of_last_test? record.bio_ferritin_count_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_rdw_count_result_normal? record.bio_rdw_count_result_normal : '' }} </td>
+                        <td> {{ record.bio_rdw_count_date_of_recent_test? record.bio_rdw_count_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_rdw_count_result_of_recent_test? record.bio_rdw_count_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_rdw_count_date_of_last_test? record.bio_rdw_count_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_rdw_count_result_of_last_test? record.bio_rdw_count_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mcv_result_normal? record.bio_mcv_result_normal : '' }} </td>
+                        <td> {{ record.bio_mcv_date_of_recent_test? record.bio_mcv_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mcv_result_of_recent_test? record.bio_mcv_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mcv_date_of_last_test? record.bio_mcv_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mcv_result_of_last_test? record.bio_mcv_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mch_result_normal? record.bio_mch_result_normal : '' }} </td>
+                        <td> {{ record.bio_mch_date_of_recent_test? record.bio_mch_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mch_result_of_recent_test? record.bio_mch_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mch_date_of_last_test? record.bio_mch_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mch_result_of_last_test? record.bio_mch_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mchc_result_normal? record.bio_mchc_result_normal : '' }} </td>
+                        <td> {{ record.bio_mchc_date_of_recent_test? record.bio_mchc_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mchc_result_of_recent_test? record.bio_mchc_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mchc_date_of_last_test? record.bio_mchc_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mchc_result_of_last_test? record.bio_mchc_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_reticulocyte_result_normal? record.bio_reticulocyte_result_normal : '' }} </td>
+                        <td> {{ record.bio_reticulocyte_date_of_recent_test? record.bio_reticulocyte_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_reticulocyte_result_of_recent_test? record.bio_reticulocyte_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_reticulocyte_date_of_last_test? record.bio_reticulocyte_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_reticulocyte_result_of_last_test? record.bio_reticulocyte_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_platelet_result_normal? record.bio_platelet_result_normal : '' }} </td>
+                        <td> {{ record.bio_platelet_date_of_recent_test? record.bio_platelet_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_platelet_result_of_recent_test? record.bio_platelet_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_platelet_date_of_last_test? record.bio_platelet_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_platelet_result_of_last_test? record.bio_platelet_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mpvplatelet_result_normal? record.bio_mpvplatelet_result_normal : '' }} </td>
+                        <td> {{ record.bio_mpvplatelet_date_of_recent_test? record.bio_mpvplatelet_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mpvplatelet_result_of_recent_test? record.bio_mpvplatelet_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_mpvplatelet_date_of_last_test? record.bio_mpvplatelet_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_mpvplatelet_result_of_last_test? record.bio_mpvplatelet_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsmacroscopic_result_normal? record.bio_utsmacroscopic_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsmacroscopic_date_of_recent_test? record.bio_utsmacroscopic_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsmacroscopic_result_of_recent_test? record.bio_utsmacroscopic_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsmacroscopic_date_of_last_test? record.bio_utsmacroscopic_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsmacroscopic_result_of_last_test? record.bio_utsmacroscopic_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsph_result_normal? record.bio_utsph_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsph_date_of_recent_test? record.bio_utsph_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsph_result_of_recent_test? record.bio_utsph_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsph_date_of_last_test? record.bio_utsph_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsph_result_of_last_test? record.bio_utsph_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsglucose_result_normal? record.bio_utsglucose_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsglucose_date_of_recent_test? record.bio_utsglucose_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsglucose_result_of_recent_test? record.bio_utsglucose_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsglucose_date_of_last_test? record.bio_utsglucose_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsglucose_result_of_last_test? record.bio_utsglucose_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsgravity_result_normal? record.bio_utsgravity_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsgravity_date_of_recent_test? record.bio_utsgravity_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsgravity_result_of_recent_test? record.bio_utsgravity_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsgravity_date_of_last_test? record.bio_utsgravity_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsgravity_result_of_last_test? record.bio_utsgravity_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsnitrite_result_normal? record.bio_utsnitrite_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsnitrite_date_of_recent_test? record.bio_utsnitrite_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsnitrite_result_of_recent_test? record.bio_utsnitrite_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsnitrite_date_of_last_test? record.bio_utsnitrite_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsnitrite_result_of_last_test? record.bio_utsnitrite_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsleukocyte_result_normal? record.bio_utsleukocyte_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsleukocyte_date_of_recent_test? record.bio_utsleukocyte_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsleukocyte_result_of_recent_test? record.bio_utsleukocyte_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_utsleukocyte_date_of_last_test? record.bio_utsleukocyte_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsleukocyte_result_of_last_test? record.bio_utsleukocyte_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_cells_result_normal? record.bio_utsmicroscopy_cells_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_cells_date_of_recent_test? record.bio_utsmicroscopy_cells_date_of_recent_test : '' }}
+                        </td>
+                        <td> {{ record.bio_utsmicroscopy_cells_result_of_recent_test? record.bio_utsmicroscopy_cells_result_of_recent_test : ''
+                            }} </td>
+                        <td> {{ record.bio_utsmicroscopy_cells_date_of_last_test? record.bio_utsmicroscopy_cells_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_cells_result_of_last_test? record.bio_utsmicroscopy_cells_result_of_last_test : '' }}
+                        </td>
+                        <td> {{ record.bio_utsmicroscopy_casts_result_normal? record.bio_utsmicroscopy_casts_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_casts_date_of_recent_test? record.bio_utsmicroscopy_casts_date_of_recent_test : '' }}
+                        </td>
+                        <td> {{ record.bio_utsmicroscopy_casts_result_of_recent_test? record.bio_utsmicroscopy_casts_result_of_recent_test : ''
+                            }} </td>
+                        <td> {{ record.bio_utsmicroscopy_casts_date_of_last_test? record.bio_utsmicroscopy_casts_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_casts_result_of_last_test? record.bio_utsmicroscopy_casts_result_of_last_test : '' }}
+                        </td>
+                        <td> {{ record.bio_utsmicroscopy_crystals_result_normal? record.bio_utsmicroscopy_crystals_result_normal : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_crystals_date_of_recent_test? record.bio_utsmicroscopy_crystals_date_of_recent_test :
+                            '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_crystals_result_of_recent_test? record.bio_utsmicroscopy_crystals_result_of_recent_test
+                            : '' }} </td>
+                        <td> {{ record.bio_utsmicroscopy_crystals_date_of_last_test? record.bio_utsmicroscopy_crystals_date_of_last_test : '' }}
+                        </td>
+                        <td> {{ record.bio_utsmicroscopy_crystals_result_of_last_test? record.bio_utsmicroscopy_crystals_result_of_last_test :
+                            '' }} </td>
+                        <td> {{ record.oral_agents_other_other? record.oral_agents_other_other : '' }} </td>
+                        <td> {{ record.oral_agents_other_pramlintide? record.oral_agents_other_pramlintide : '' }} </td>
+                        <td> {{ record.oral_agents_other? record.oral_agents_other : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_statins_dose? record.anti_dyslipidemia_statins_dose : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_other_dose? record.anti_dyslipidemia_other_dose : '' }} </td>
+                        <td> {{ record.oral_agents_thiazolidinediones_dose? record.oral_agents_thiazolidinediones_dose : '' }} </td>
+                        <td> {{ record.oral_agents_sulphonyureas_dose? record.oral_agents_sulphonyureas_dose : '' }} </td>
+                        <td> {{ record.bio_fbg_date_of_recent_test? record.bio_fbg_date_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_fbg_result_of_recent_test? record.bio_fbg_result_of_recent_test : '' }} </td>
+                        <td> {{ record.bio_fbg_date_of_last_test? record.bio_fbg_date_of_last_test : '' }} </td>
+                        <td> {{ record.bio_fbg_result_of_last_test? record.bio_fbg_result_of_last_test : '' }} </td>
+                        <td> {{ record.bio_fbg_result_normal? record.bio_fbg_result_normal : '' }} </td>
+                        <td> {{ record.anti_hypertensive_ace_inhibitors_dose? record.anti_hypertensive_ace_inhibitors_dose : '' }} </td>
+                        <td> {{ record.oral_agents_other_dose? record.oral_agents_other_dose : '' }} </td>
+                        <td> {{ record.anti_hypertensive_other_dose ? record.anti_hypertensive_other_dose : '' }} </td>
+                        <td> {{ record.anti_hypertensive_cachannel_blockers_dose? record.anti_hypertensive_cachannel_blockers_dose : '' }} </td>
+                        <td> {{ record.anti_hypertensive_diuretics_dose? record.anti_hypertensive_diuretics_dose : '' }} </td>
+                        <td> {{ record.anti_hypertensive_beta_blockers_dose? record.anti_hypertensive_beta_blockers_dose : '' }} </td>
+                        <td> {{ record.anti_hypertensive_arbs_dose? record.anti_hypertensive_arbs_dose : '' }} </td>
+                        <td> {{ record.anti_dyslipidemia_fibrates_dose? record.anti_dyslipidemia_fibrates_dose : '' }} </td>
+                          </tr>
+                  
+                      </tbody> -->
+                  </table>
+                  
+                  </div>
+                  </div>
+				<form autocomplete="off" [formGroup]="form"  class="kt-form kt-form--group-seperator-dashed">
+			
+				  <!-- <div  *ngFor="let userrights of userRights">
+            
+					<div class="form-group  row" *ngIf="userrights.sectionid === 4 &&  userrights.usertype === 'Admin'">
+								   
+				<div class="col-md-2 form-group">
+					<div>
+						<mat-radio-group formControlName="file" >
+							<mat-radio-button  value="excel">Import From Excel</mat-radio-button>
+						</mat-radio-group>
+					</div>
+				</div> 
+						
+						<div class="col-md-4  form-group">
+							<div *ngIf="form.get('file').value == 'excel'">
+						 
+							<mat-form-field class="mat-form-field-fluid">
+								<ngx-mat-file-input  name="excelfiles"  #removableInputExcel formControlName="removableexcelfile" (change)="incomingfileexcel($event)"  placeholder="Excel file only (Click here)" value="processexcel" [accept]="'.xlsx'">
+								</ngx-mat-file-input>
+								<mat-icon matSuffix>folder</mat-icon>
+								<button mat-icon-button matSuffix *ngIf="!removableInputExcel.empty" (click)="removableInputExcel.clear($event)">
+									<mat-icon>clear</mat-icon>
+								  </button>
+							</mat-form-field>
+							</div>
+						</div>
+					   
+						<div class="col-2 form-group">
+							<div *ngIf="form.get('removableexcelfile').value">
+						
+							<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="UploadExcel()"
+								mat-raised-button matTooltip="Process">
+								<i class="la la-arrow-right"></i>
+								<span class="kt-hidden-mobile">Process Excel</span>
+							</a>
+							</div>
+						</div>
+						
+					<div class="col-2 form-group"
+					*ngIf="dataList?.length > 0 && (form.get('removableexcelfile').value)">
+				
+					<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="Upload()"
+						mat-raised-button matTooltip="Upload">
+						<i class="la la-upload"></i>
+						<span class="kt-hidden-mobile">Upload</span>
+					</a>
+				</div>
+						<div class="col-md-2 kt-margin-bottom-20-mobile">
+							<mat-form-field class="mat-form-field-fluid">
+								<input matInput placeholder="Search form" #searchInput placeholder="Search">
+			
+							</mat-form-field>
+							</div>  
+							</div>
+							</div> -->
+				  	<div class="form-group  row">
+						<div class="col-md-2  form-group">
+							<mat-form-field class="mat-form-field-fluid">
+								<input matInput placeholder="Search form" #searchInput placeholder="Search">
+			
+							</mat-form-field>
+						</div>
+						<div class="col-md-10" >
+					<div *ngFor="let userrights of userRights">
+            
+					<div *ngIf="userrights.sectionid === 4 &&  (userrights.usertype === 'Admin' || userrights.usertype === 'User')">
+					<div class="row">		   
+				<div class="col-md-4 form-group">
+					
+						<mat-radio-group formControlName="file" >
+							<mat-radio-button  value="excel">Import Excel Multiple Samples</mat-radio-button>
+						</mat-radio-group>
+					
+				</div> 
+						
+						<div class="col-md-3 form-group" *ngIf="form.get('file').value == 'excel'">
+							
+						 
+							<mat-form-field class="mat-form-field-fluid">
+								<ngx-mat-file-input  name="excelfiles"  #removableInputExcel formControlName="removableexcelfile" (change)="incomingfileexcel($event)"  placeholder="Excel file only (Click here)" value="processexcel" [accept]="'.xlsx'">
+								</ngx-mat-file-input>
+								<mat-icon matSuffix>folder</mat-icon>
+								<button mat-icon-button matSuffix *ngIf="!removableInputExcel.empty" (click)="removableInputExcel.clear($event)">
+									<mat-icon>clear</mat-icon>
+								  </button>
+							</mat-form-field>
+							
+						</div>
+					   
+						<div class="col-md-3  form-group" *ngIf="form.get('removableexcelfile').value">
+							
+							<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="UploadExcel()"
+								mat-raised-button matTooltip="Process">
+								<i class="la la-arrow-right"></i>
+								<span class="kt-hidden-mobile">Process Excel</span>
+							</a>
+							
+						</div>
+						
+					<div class="col-md-2  form-group"
+					*ngIf="dataList?.length > 0 && (form.get('removableexcelfile').value)">
+				
+					<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="Upload()"
+						mat-raised-button matTooltip="Upload">
+						<i class="la la-upload"></i>
+						<span class="kt-hidden-mobile">Upload</span>
+					</a>
+				</div>
+			</div>	
+							</div>
+							</div>
+						
+						</div>
+						</div>	
+						</form> 
+			</div>
+			</div>
+
+		<div #MainBody class="mat-table__wrapper col-md-12" >
+		
+			<mat-table id="matTable" class="lmat-elevation-z8"
+			[dataSource]="dataSource"
+			matSort
+			#sort1="matSort"
+			matSortActive="savedFormID"
+			matSortDirection="asc"
+			>
+				<div matColumnDef="id">
+					<mat-header-cell *matHeaderCellDef >S.No</mat-header-cell>
+					<mat-cell *matCellDef="let form; let i = index">{{(lastQuery.pageNumber*lastQuery.pageSize)+i+1}}</mat-cell>
+				</div>
+				<div matColumnDef="1">
+					<mat-header-cell *matHeaderCellDef mat-sort-header class="email-cell">Form ID</mat-header-cell>
+					<mat-cell *matCellDef="let form" class="email-cell">{{form.SavedFormID}}</mat-cell>
+				</div>
+				<div matColumnDef="2">
+					<mat-header-cell *matHeaderCellDef mat-sort-header class="email-cell">Sample ID</mat-header-cell>
+					<mat-cell *matCellDef="let form" class="email-cell">
+						<a routerLink="../edit/{{form.SavedFormID}}" class="kt-link">{{form.sample}}</a>
+					</mat-cell>
+				</div>
+				<div matColumnDef="3">
+					<mat-header-cell *matHeaderCellDef mat-sort-header class="email-cell">Full Name</mat-header-cell>
+					<mat-cell *matCellDef="let form" class="email-cell">
+						{{form.per_firstname}} {{form.per_middlename}} {{form.per_lastname}}
+					</mat-cell>
+				</div>
+				<div matColumnDef="4">
+					<mat-header-cell *matHeaderCellDef mat-sort-header  class="email-cell">Emirates ID Number</mat-header-cell>
+					<mat-cell *matCellDef="let form"  class="email-cell">
+						<input matInput type="text" disabled="disabled" style="color:black;"  [specialCharacters]="[ '-' ]" mask="000-0000-0000000-0" [(ngModel)]="form.emiratesid" [value]="form.emiratesid"  placeholder="Emirates ID(784XXXXXXXXXXXX)/رقم الهوية"  
+						/>
+                            
+						</mat-cell>
+				</div>
+				<div matColumnDef="actions">
+					<div    *ngFor="let userrights of userRights">
+				
+					<div *ngIf="userrights.sectionid === 1 && userrights.usertype === 'Admin'; else elseBlock">
+						<mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+					<mat-cell *matCellDef="let form">
+						<button *ngIf="userrights.editform === 1" (click)="editForm(form.SavedFormID)" mat-icon-button color="primary" matTooltip="Edit form">
+							<mat-icon>create</mat-icon>
+						</button>&nbsp;
+						<button color="warn"  *ngIf="userrights.deleteform === 1" (click)="deleteForm(form.SavedFormID)" mat-icon-button matTooltip="Delete form">
+							<mat-icon>delete</mat-icon>
+						</button>&nbsp;
+						<a mat-icon-button *ngIf="userrights.reportform === 1" color="warn" matTooltip="Print form" routerLink="../print/{{form.SavedFormID}}">
+							<mat-icon>print</mat-icon>
+						</a>
+					</mat-cell>
+				</div>
+				
+				<div #elseBlock *ngIf="userrights.usertype === 'User'">
+				<div matColumnDef="actions">
+					<mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+					<mat-cell *matCellDef="let form">
+						<button *ngIf="userrights.editform === 1" (click)="editForm(form.SavedFormID)" mat-icon-button color="primary" matTooltip="Edit form">
+							<mat-icon>create</mat-icon>
+						</button>&nbsp;
+						<button color="warn"  *ngIf="userrights.deleteform === 1" (click)="deleteForm(form.SavedFormID)" mat-icon-button matTooltip="Delete form">
+							<mat-icon>delete</mat-icon>
+						</button>&nbsp;
+						<a mat-icon-button *ngIf="userrights.reportform === 1" color="warn" matTooltip="Print form" routerLink="../print/{{form.SavedFormID}}">
+							<mat-icon>print</mat-icon>
+						</a>
+					</mat-cell>
+				</div>
+				</div>
+				</div>
+			</div>
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+				<mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+			</mat-table>
+		
+			<div class="mat-table__message" *ngIf="dataSource.length == 0 && loading$ == false">No records found</div><!-- Message for empty data  -->
+			<div class="mat-table__message" *ngIf="loading$">Please wait....</div>
+		</div>
+
+
+		<!-- start: BOTTOM -->
+		<div class="mat-table__bottom">
+			<!-- MATERIAL SPINNER | Url: 'https://material.angular.io/components/progress-spinner/overview' -->
+			<!--<mat-spinner [diameter]="20" *ngIf="dataSource.loading$ | async"></mat-spinner>-->
+			<!-- MATERIAL PAGINATOR | Binded to dasources -->
+			<!-- See off.documentations 'https://material.angular.io/components/paginator/overview' -->
+			<mat-paginator [length]="lastQuery.totalRecords"
+						   [pageSize]="10"
+						   (page)="getPaginatorData($event)"
+						   [showFirstLastButtons]="true"
+						   [pageSizeOptions]="[5, 10, 25, 50]">
+
+			</mat-paginator>
+
+			<!--<mat-paginator *ngIf="dataSource.length > 1" [pageSize]="10" [pageSizeOptions]="[10,25,50,100]" [length]="400 || dataSource?.length"></mat-paginator>-->
+		</div>
+		<!-- end: BOTTOM -->
+	</kt-portlet-body>
+	<!-- end::Body -->
+</kt-portlet>

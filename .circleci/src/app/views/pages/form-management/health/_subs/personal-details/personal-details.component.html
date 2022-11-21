@@ -1,0 +1,2420 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+
+        <!--<kt-alert *ngIf="hasFormErrors" type="warn" [showCloseButton]="true" [duration]="10000"-->
+                  <!--(close)="onAlertClose($event)">-->
+            <!--Oh snap! Change a few things up and try submitting again.-->
+        <!--</kt-alert>-->
+        <div class="kt-form__section kt-form__section--first">
+            <div  *ngFor="let userrights of userRights">
+            
+<div class="form-group  row" *ngIf="userrights.sectionid === 2 &&  userrights.usertype === 'Admin'">
+                
+    <div class="col-md-6  form-group"></div>
+    
+    <div class="col-md-4  form-group"></div>
+    
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+               
+        <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+        mat-raised-button matTooltip="Save Details">
+        <i class="la la-save"></i>
+        <span class="kt-hidden-mobile">Save</span>
+        </a>
+        </div>  
+        </div>
+        </div>
+           <div  *ngFor="let userrights of userRights">
+           <div *ngIf="userrights.sectionid === 2 && userrights.usertype === 'User'">
+          
+            <div class="form-group  row">
+                
+                <div class="col-md-4 kt-margin-bottom-20-mobile"  >
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Sample Id" autocomplete="off" formControlName="sample" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" />
+                        <div *ngIf="submitted && f.sample.errors" class="alert alert-danger">
+                            <div *ngIf="f.sample.errors.required">Sample is required</div>
+                        </div>
+                        <!-- <mat-error>
+                            <span *ngIf="!form.get('sample').valid && form.get('sample').touched">Please enter Sample</span>
+                        </mat-error> -->
+                        
+                    </mat-form-field>
+                </div>
+
+                    <div class="col-md-4 kt-margin-bottom-20-mobile" >
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput placeholder="Project Title"
+                                   autocomplete="off"
+                                   formControlName="projecttitle" />
+                                  
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2 kt-margin-bottom-20-mobile">
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput [matDatepicker]="doaPicker"
+                                   autocomplete="off"
+                                   [max]="maxDate"
+                                   (click)="doaPicker.open()"
+                                   placeholder="Collection Date" (click)="doaPicker.open()" formControlName="collected_date" />
+                            <mat-datepicker-toggle matSuffix [for]="doaPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #doaPicker></mat-datepicker>
+                            <!--<mat-hint align="start">Please enter-->
+                            <!--<strong>Date of assessment</strong> in 'mm/dd/yyyy' format</mat-hint>-->
+                        </mat-form-field>
+                    </div>
+                   
+                    <div class="col-md-2 kt-margin-bottom-20-mobile">
+                       
+                        <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+                        mat-raised-button matTooltip="Save & Continue">
+                        <i class="la la-save"></i>
+                        <span class="kt-hidden-mobile">Save</span>
+                        </a>
+                        </div>  
+            </div>
+              
+            <div class="form-group  row">
+                <div class="col-md-3 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Principal Investigator"
+                               autocomplete="off"
+                               formControlName="principalinvestigator" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-3 row form-group">
+                    <mat-form-field>
+                        <mat-select placeholder="Collection Point" formControlName="collection_point">
+                            <mat-option *ngFor="let data of filteredColletionType"
+                                 value="{{ data.name }}">{{ data.name }}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+            </div>
+               
+              
+            <div class="col-md-3 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Collected By(First & Last Name)" autocomplete="off" formControlName="collected_by" />
+                    <div *ngIf="f.collected_by.invalid && (f.collected_by.dirty || f.collected_by.touched)" class="alert alert-danger">
+                       
+                        <div *ngIf="f.collected_by.errors.pattern">First Name allowed only '-' character but Not numeric and special characters </div>
+                                </div>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Medical Reference Number (MRN):" autocomplete="off" formControlName="medical_reference_number" />
+                    
+                </mat-form-field>
+            </div>
+               
+            </div>
+
+            </div>
+           </div>
+            <div  *ngFor="let userrights of userRights">
+        <!-- {{showSave}} -->
+                <div class="form-group  row" *ngIf="showSave && userrights.sectionid === 2 &&  (userrights.usertype === 'Admin' || userrights.usertype === 'User')">
+                  
+        <div class="form-group row">
+            <div class="col-md-6 kt-margin-bottom-20-mobile">
+                <div class="col-md-12 kt-margin-bottom-20-mobile">
+
+                    <label id="example-radio-group-label"> Individual/Family<strong style="color:red;"  *ngIf="showSave">(*)</strong></label>
+        
+                    <mat-radio-group matInput aria-labelledby="example-radio-group-label" required [ngClass]="{ 'is-invalid': submitted && f.indifamily.errors }" formControlName="indifamily" >
+                        <mat-radio-button matInput  value="Individual">Individual/فرد</mat-radio-button>
+                        <mat-radio-button  matInput value="Family">Family/عائلة</mat-radio-button>
+                    </mat-radio-group>
+                    <div *ngIf="submitted && f.indifamily.errors" class="invalid-feedback">
+                        <div *ngIf="f.indifamily.errors.required">Individual/Family is to be selected</div>
+                    </div>
+                </div>
+            </div>
+           
+              
+        
+        <div class="col-md-2 kt-margin-bottom-20-mobile" *ngIf="form.get('indifamily').value === 'Family'">
+            <mat-form-field class="mat-form-field-fluid">
+                
+                <input matInput  type="number" autocomplete="off"  formControlName="family_number"  [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.family_number.errors }" />
+                <mat-placeholder >Family No*/رقم <strong style="color:red;">(*)</strong></mat-placeholder>
+                           
+                <div *ngIf="submitted && f.family_number.errors" class="invalid-feedback">
+                    <div *ngIf="f.family_number.errors.required">Family Number *</div>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="col-md-1 kt-margin-bottom-20-mobile" *ngIf="form.get('indifamily').value === 'Family'">
+            <div class="mat-form-field-fluid">
+            <label id="example-radio-group-label">If Family/اذا عائلة &nbsp;&nbsp;&nbsp;</label>
+        </div>
+    </div>
+        <div class="col-md-3 form-group" *ngIf="form.get('indifamily').value === 'Family'">
+            <div>
+                <mat-radio-group aria-labelledby="example-radio-group-label"  formControlName="family_yes">
+                    <mat-radio-button matInput  value="Father">Father/أب</mat-radio-button>
+                    <mat-radio-button  matInput value="Mother">Mother/أم</mat-radio-button>
+                    <mat-radio-button matInput  value="Adult">Adult/بالغ Greater than 18 </mat-radio-button>
+                    <mat-radio-button  matInput value="Child">Child/طفل Less than 18</mat-radio-button>
+                </mat-radio-group>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        <div  *ngFor="let userrights of userRights">
+            <div *ngIf="userrights.sectionid === 2 && userrights.usertype === 'User'">
+           
+<div class="form-group  row">
+<div class="col-md-12">
+        <label align="start">
+         <h5>1. Participant’s Personal Details/التفاصيل الشخصية </h5>  
+        </label>
+</div>
+</div>
+        <div class="form-group  row">
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="First Name/الاسم الأول" autocomplete="off"  formControlName="per_firstname" />
+                    
+                </mat-form-field>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Middle Name/الاسم الثاني" autocomplete="off" formControlName="per_middlename" />
+                   
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Last Name/اسم العائلة" autocomplete="off" formControlName="per_lastname" />
+                    
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-group  row">
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <div class="mat-form-field-fluid">
+
+                    <label id="example-radio-group-label">Gender &nbsp;&nbsp;&nbsp;</label>
+
+                    <mat-radio-group aria-labelledby="example-radio-group-label"  formControlName="gender">
+                        <mat-radio-button matInput  value="Male">Male/ذكر</mat-radio-button>
+                        <mat-radio-button  matInput value="Female">Female/أنثى</mat-radio-button>
+                    </mat-radio-group>
+
+                </div>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput type="text"  [specialCharacters]="[ '-' ]" mask="000-0000-0000000-0" formControlName="emiratesid" required [errorStateMatcher]="matcher"  onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" pattern="^784{{yearOfbirth}}[0-9]{7}[0-9]{1}$" placeholder="Emirates ID(784XXXXXXXXXXXX)/رقم الهوية" [ngClass]="{ 'is-invalid': submitted && f.sample.errors }" 
+                    />
+                    <div *ngIf="submitted && f.emiratesid.errors" class="alert alert-danger">
+                        <div *ngIf="f.emiratesid.errors.required"> Emirates ID Number is required with 15 digits & should include year of Date of Birth.</div>
+                    </div>
+                   </mat-form-field>
+            </div>
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Nationality/الجنسية:" formControlName="nationality" [matAutocomplete]="manuf">
+                    <mat-autocomplete #manuf="matAutocomplete">
+                        <mat-option *ngFor="let nationality of filteredNationalities | async" [value]="nationality">
+                            {{ nationality }}
+                        </mat-option>
+                    </mat-autocomplete>
+                    <mat-error>
+                        Nationality is
+                        <strong>required</strong>
+                    </mat-error>
+                    <!--<mat-hint align="start">Please enter-->
+                    <!--<strong>Nationality</strong>-->
+                    <!--</mat-hint>-->
+                </mat-form-field>
+            </div>
+        </div>
+       
+        <div class="form-group  row">
+            <div class="col-md-4 kt-margin-bottom-20-mobile">
+                
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput [matDatepicker]="dobPicker"
+                           (click)="dobPicker.open()"
+                           [max]="maxDate"
+                           autocomplete="off"
+                           (ngModelChange)="CalculateAge()" 
+                           placeholder="Choose a Date of Birth/تاريخ الميلاد" formControlName="dob" />
+                    <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #dobPicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-1 kt-margin-bottom-20-mobile">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Age"  autocomplete="off" formControlName="age" />
+                </mat-form-field>
+            </div>
+           
+<div class="col-md-3 kt-margin-bottom-20-mobile">
+<mat-form-field class="mat-form-field-fluid">
+    <input matInput placeholder="Place Of Birth/مكان الميلاد" autocomplete="off"
+           [matAutocomplete]="manuf1"       formControlName="placeofbirth" />
+
+    <mat-autocomplete #manuf1="matAutocomplete">
+        <mat-option *ngFor="let data of filteredPlaces | async" [value]="data">
+            {{ data }}
+        </mat-option>
+    </mat-autocomplete>
+
+</mat-form-field>
+</div>
+
+
+            
+            
+                </div>
+                
+                <!-- <div class="form-group  row">
+                    
+                    <div class="col-md-4 kt-margin-bottom-20-mobile" >
+                        <mat-form-field class="mat-form-field-fluid">
+                            <input matInput required minlength="12" maxlength="12" type="text"
+                            onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                            maxlength="12" type="tel" pattern="^(?:\971)?(?:50|54|52|55|56|53|58)\d{7}||(?:40|45|65|66|20)\d{6}$" placeholder="9715XXXXXXXX"
+                            formControlName="phone" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }">
+                       
+                            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                <div *ngIf="f.phone.errors.required">Phone Number should start with 971- 50|54|52|55|58|56|40|45|65|66|20</div>
+                            </div>
+                       
+                       </mat-form-field>
+                </div>
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Email" autocomplete="off" formControlName="email" required [errorStateMatcher]="matcher" [ngClass]="{ 'is-invalid': submitted &&  f.email.errors }" />
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                           </div>
+                       </mat-form-field>
+                </div>
+            </div> -->
+            
+        </div>
+        </div>
+        <!-- <div  *ngFor="let userrights of userRights">
+       
+                <div class="form-group  row" *ngIf="showSave && userrights.sectionid === 2 &&  (userrights.usertype === 'Admin' || userrights.usertype === 'User')">
+                  
+    
+        </div>
+        </div> -->
+                <div class="form-group  row">
+                    
+                    <div class="col-md-4 kt-margin-bottom-20-mobile">
+                        <div class="mat-form-field-fluid">
+                        <label id="example-radio-group-label">Ethnicity/العرق &nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div>
+                            <mat-radio-group aria-labelledby="Ethnicity"  formControlName="ethnicity">
+                                
+            <mat-radio-button matInput  value="Arab/Bedouin">Arab/Bedouin/عرب/بدو</mat-radio-button>
+            <mat-radio-button  matInput value="Ajam">Ajam/عجم</mat-radio-button>
+            <mat-radio-button  matInput value="Bloush">Bloush/بلوش</mat-radio-button>
+            <mat-radio-button  matInput value="Yemeni">Yemeni/يمني</mat-radio-button>
+           <mat-radio-button  matInput value="Mixed">Mixed/مختلط</mat-radio-button>
+            <mat-radio-button  matInput value="Other">Other/آخر</mat-radio-button>
+                            </mat-radio-group>
+    
+                        </div>
+                        <div *ngIf="form.get('ethnicity').value == 'mixed'" >
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="If Mixed, specify"
+                                    formControlName="ethnicity_mixed_specify_text" />
+                            </mat-form-field>
+                        </div>
+                        <div *ngIf="form.get('ethnicity').value == 'Other'" >
+                            <mat-form-field class="mat-form-field-fluid">
+                                <input matInput placeholder="If Other, specify"
+                                    formControlName="ethnicity_others_text" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group  row">
+                    
+                    <div class="col-md-4 kt-margin-bottom-20-mobile">
+                        <div class="mat-form-field-fluid">
+                        <label id="example-radio-group-label">Marital Status/الحالة الاجتماعية &nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div>
+                        <mat-radio-group aria-labelledby="marital_status"  formControlName="maritalstatus">
+                            <mat-radio-button matInput  value="Single">Single/أعزب</mat-radio-button>
+                            <mat-radio-button  matInput value="Married">Married/متزوج</mat-radio-button>
+                             <mat-radio-button  matInput value="Divorced">Divorced/مطلق</mat-radio-button>
+                            <mat-radio-button  matInput value="Widowed">Widowed/أرمل</mat-radio-button>
+                            </mat-radio-group>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group  row">
+                
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <div class="mat-form-field-fluid">
+                        <label align="start">
+                            Consanguineous Marriage?/اذا متزوج, هل هو زواج أقارب؟
+                         
+                          </label>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group" >
+                    <mat-radio-group aria-labelledby="Consanguineous_Marrage"  formControlName="marriage_con">
+                        <mat-radio-button matInput  value="Yes">Yes/نعم</mat-radio-button>
+                        <mat-radio-button  matInput value="No">No/لا</mat-radio-button>
+                        </mat-radio-group>
+                </div>
+           </div>
+                    
+<div class="form-group  row">
+
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <label align="start">
+                Number of children: /عدد الأطفال
+            </label>
+        </div>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Males/ذكور" type="number" 
+                   formControlName="pers_numberofchildren" />
+            <!--<mat-hint align="start">Please enter-->
+            <!--<strong>Number Of ChilNumberofchildrendren</strong>-->
+            <!--</mat-hint>-->
+        </mat-form-field>
+    </div>
+   
+    <div class="col-md-3 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If male, number of wives/إذا ذكر, عدد الزوجات "  type="number" 
+                   formControlName="pers_numberofwives" />
+            <!--<mat-hint align="start">Please enter-->
+            <!--<strong>Number Of ChilNumberofchildrendren</strong>-->
+            <!--</mat-hint>-->
+        </mat-form-field>
+    </div>
+    <div class="col-md-3 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Females/اناث: " type="number" 
+                   formControlName="pers_girls" />
+            <!--<mat-hint align="start">Please enter-->
+            <!--<strong>Number Of ChilNumberofchildrendren</strong>-->
+            <!--</mat-hint>-->
+        </mat-form-field>
+    </div>
+
+</div>
+<div class="form-group  row">
+
+    <div class="col-md-6 kt-margin-bottom-20-mobile">
+                
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="Highest level of education/أعلى مستوى تعليمي" formControlName="edulevel" [matAutocomplete]="edu">
+            <mat-autocomplete #edu="matAutocomplete">
+                <mat-option  value="Did not attend school">Did not attend school/أمي</mat-option>
+                <mat-option  value="Less than high school">Less than high school/أقل من الثانوية العامة</mat-option>
+                <mat-option  value="Completed High School">Completed High School/أكملت الثانوية العامة</mat-option>
+                <mat-option  value="Completed bachelor or diploma">Completed bachelor or diploma/أكملت البكالوريوس أو الدبلوم</mat-option>
+                <mat-option  value="Completed master or PhD">Completed master or PhD/أكملت الماجستير أو الدكتوراه</mat-option>
+                <mat-option  value="Not sure">Not sure/غير متأكد</mat-option>
+
+                <mat-option  value="Prefer not to disclose">Prefer not to disclose/يفضل عدم الاجابةالإجابة</mat-option>
+            </mat-autocomplete>
+            <mat-error>
+                Education level is
+                <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+            <div class="col-md-6 kt-margin-bottom-20-mobile">
+                
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="Current employment status/العمل الحالي" formControlName="employment_status" [matAutocomplete]="empstatus">
+                    <mat-autocomplete #empstatus="matAutocomplete">
+                        <mat-option  value="Employed (including-self-employment)">Employed (including self-employment)/موظف (يتضمن الأعمال الحرة)</mat-option>
+                        <mat-option  value="Unemployed">Unemployed/غير موظف </mat-option>
+                        <mat-option  value="Retired">Retired/متقاعد </mat-option>
+                        <mat-option  value="Student">Student/طالب</mat-option>
+                        <mat-option  value="Housewife">Housewife/ربة منزل</mat-option>
+                        <mat-option  value="Not sure">Not sure/غير متأكد</mat-option>
+                        <mat-option  value="Prefer not to disclose">Prefer not to disclose/يفضل عدم الإجابة</mat-option>
+                    </mat-autocomplete>
+                    <mat-error>
+                        Education level is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+<!--   
+        <div  *ngFor="let userrights of userRights">
+            <div *ngIf="userrights.sectionid === 2 && userrights.usertype === 'User'">            
+
+
+</div>
+        </div> -->
+        <div class="form-group  row">
+            <div class="col-md-12">
+                <label align="start">
+                 <h5>2. Participant’s Clinical Details/التفاصيل الطبية </h5>  
+                 
+        
+                </label>
+        </div>
+        </div>          
+<div class="form-group  row">
+    <div class="col-md-12">
+        <label align="start">
+         <h5>2.b: Medical Education/الوعي الطبي: </h5>  
+
+        </label>
+    </div>
+</div>
+<div class="form-group row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+                Who do you usually contact for health advice about your health?/مع من تتواصل للحصول على نصائح طبية
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div>
+            <mat-radio-group formControlName="med_healthadvcontact">
+                <mat-radio-button  value="No one">No one/لا أحد</mat-radio-button>
+                <mat-radio-button  value="Dietitian">Dietitian/أخصائي تغذية</mat-radio-button>
+                <mat-radio-button  value="Nurse">Nurse/ممرض</mat-radio-button>
+                <mat-radio-button  value="GP">GP/طبيب عام</mat-radio-button>
+                <mat-radio-button  value="Pharmacist">Pharmacist/صيدلي</mat-radio-button>
+                <mat-radio-button  value="Diabetes Specialist">Diabetes Specialist/أخصائي مرض السكري</mat-radio-button>
+                <mat-radio-button  value="Other">Other/آخر:</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+<div class="form-group row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+              
+            </label>
+        </div>
+    </div>
+    <div class="col-md-8 form-group" *ngIf="form.get('med_healthadvcontact').value == 'Other'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Other"
+                formControlName="med_healthadvcontact_othtxt" />
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="form-group row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+                Do you do an annual Medical checkup/هل تقوم بالفحص الطبي السنوي؟  
+            </label>
+        </div>
+    </div>
+    <div class="col-md-8 form-group">
+        <div>
+            <mat-radio-group formControlName="med_annualcheck">
+                 <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+   
+    <div class="col-md-12 row" >
+        <div class="col-md-4">
+            <div class="kt-section">
+                <label align="start">
+                    Have you seen any health practitioners (GP/specialist/consultant) in the last 12 months?/هل قمت بزيارة أي ممارس طبي (طبيب عام, طبيب متخصص, مستشار طبي) خلال ال 12 أشهر الماضية 
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6  form-group">
+            <div>
+                <mat-radio-group formControlName="med_gpvisit">
+                    <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                    <mat-radio-button  value="No">No/لا</mat-radio-button>        
+                    <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+  
+        <div class="col-md-2 form-group" *ngIf="form.get('med_gpvisit').value == 'Yes'" >
+            <mat-form-field class="mat-form-field-fluid">
+                <input matInput placeholder="If Yes, please specify"
+                    formControlName="med_gpvisit_yestxt" />
+            </mat-form-field>
+        </div>
+   </div>
+   <div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+                If you are >40 years, how often do you monitor your blood glucose at home (i.e. with finger pricks)?/إذا تبلغ من العمر أكثر من 40 سنة, كم مرة تراقب نسبة الجلوكوز في الدم في المنزل
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div>
+            <mat-radio-group formControlName="med_glucosemon40">
+                <mat-radio-button  value="Zero Times">Zero times/ولا مرة</mat-radio-button>
+                <mat-radio-button  value="Once a day">Once a day/مرة في اليوم</mat-radio-button>
+                <mat-radio-button  value="2 to 4 times a day">2 to 4 times a day/مرتين الى اربع مرات في اليوم</mat-radio-button>
+                <mat-radio-button  value="More than 4 times a day">More than 4 times a day/أكثر من 4 مرات في اليوم</mat-radio-button>
+                <mat-radio-button  value="Once a week">Once a week/مرة في الاسبوع</mat-radio-button>
+    <mat-radio-button  value="3 to 5 times a week"> 3 to 5 times a week/ثلاث إلى أربع خمس مرات في الأسبوع
+
+    </mat-radio-button>
+                <mat-radio-button  value="Once a month">Once a month/مرة في الشهر</mat-radio-button>
+                <mat-radio-button  value="Not sure">Not sure/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Other">Other/اخر: </mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+              
+            </label>
+        </div>
+    </div>
+    <div class="col-md-8 form-group" *ngIf="form.get('med_glucosemon40').value == 'Other'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Other"
+                formControlName="med_glucosemon40_othtxt" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="col-md-12 row" >
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Have you been admitted to the hospital/emergency department in the last 12 months?/هل تم إدخالك إلى المستشفى/قسم الطوارئ خلال ال 12 شهر الماضي
+        </label>
+    </div>
+</div>
+<div class="col-md-6  form-group">
+    <div>
+        <mat-radio-group formControlName="med_hospitaladm">
+            <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+            <mat-radio-button  value="No">No/لا</mat-radio-button>
+            <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_hospitaladm').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input matInput placeholder="If Yes, please specify/اذا نعم, حدد: "
+            formControlName="med_hospitaladm_yestxt" />
+    </mat-form-field>
+</div>
+</div>   
+<div class="row col-md-12 form-group">
+    <h5>
+        2.c: Participant’s Medical Status/الحالة الصحية:
+    </h5>
+</div>
+
+<div class="row col-md-12  form-group">
+    <div class="col-md-4  form-group">
+        <div class="kt-section">
+            <label align="start">
+                Do you have any allergies?/هل لديك حساسية؟
+            </label>
+        </div>
+    </div>
+    <div class="col-md-4 form-group">
+        <div>
+            <mat-radio-group formControlName="allergies">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-4 form-group" *ngIf="form.get('allergies').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Yes, please specify/اذا نعم, حدد:"
+                formControlName="allergies_yestxt" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4 form-group">
+        <div class="kt-section">
+            <label align="start">
+                Do you have any intolerance?/هل لديك حساسية مفرطة؟
+            </label>
+        </div>
+    </div>
+    <div class="col-md-4 form-group">
+        <div>
+            <mat-radio-group formControlName="intolerance">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-4 form-group" *ngIf="form.get('intolerance').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Yes, please specify/اذا نعم, حدد:"
+                formControlName="intolerance_yestxt" />
+        </mat-form-field>
+    </div>
+</div>
+    <div class="col-md-12 form-group row">
+        <h5>
+            Have you been diagnosed with any of these conditions? (tick the box(s)) If yes, please specify year of diagnosis. (you can tick more than one answer)هل تعاني من أي من هذه الحالات المرضية؟ (ضع علامة في المربع). اذا نعم, اذكر سنة التشخيص. (بإمكانك أن تختار أكثر من اجابة)
+        </h5>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+               COVID-19 (كوفيد-19)  
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_covid19">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_covid19').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_covid19_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Hypertension (excluding during pregnancy)رتفاع ضغط الدم (باستثناء أثناء الحمل)
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_hypertension">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+          </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_hypertension').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_hypertension_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Type 2 Diabetes (excluding during pregnancy) داء السكري من النوع الثاني (باستثناء فترة الحمل)
+
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_type2diabetes">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+          </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_type2diabetes').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_type2diabetes_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+              Gestational diabetes داء السكري الحملي   
+                                                         
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_gestational">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+          </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_gestational').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_gestational_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+               Prediabetes	مقدمات السكري                   
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_prediabetes">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+          </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_prediabetes').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_prediabetes_year" />
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row col-md-12">
+    <div class="col-md-12">
+        <div class="kt-section">
+            <label align="start"><br>
+if yes, please fill section 2.d. مرض السكري من النوع الثاني (باستثناء أثناء الحمل) اذا نعم املاء قسم ٢ د
+</label>
+</div>
+</div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Type 1 diabetes/مرض السكري النوع الأول
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_type1diabetes">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_type1diabetes').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_type1diabetes_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                High cholesterol/ارتفاع الكولسترول
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_highcholesterol">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_highcholesterol').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_highcholesterol_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Obesity/السمنة
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_obesity">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_obesity').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_obesity_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+               Kidney disease مرض الكلية                                                
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_kidneydisease">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_kidneydisease').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_kidneydisease_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Active or recent urinary tract infection(UTI)
+                in the past 3 months
+                عدوى المسالك البولية النشطة أو الحديثة في الأشهر الثلاثة الماضية         
+                                           
+               
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_activeorrecenturinarytractinfection">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_activeorrecenturinarytractinfection').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_activeorrecenturinarytractinfection_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+               Hematological diseases
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_hematological_diseases">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_hematological_diseases').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_hematological_diseases_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Heart disease/أمراض القلب
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_heartdis">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_heartdis').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_heartdis_year" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Cancer/السرطان
+            </label>
+        </div>
+    </div>
+    <div class="col-md-8 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_cancer">
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+        </div>
+    </div>
+   
+</div>
+<div class="row col-md-12" *ngIf="form.get('med_cancer').value == 'Yes'">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+              
+            </label>
+        </div>
+    </div>
+    <div class="col-md-4 form-group" *ngIf="form.get('med_cancer').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_cancer_year" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 form-group" *ngIf="form.get('med_cancer').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Yes, which type/اذا نعم أي نوع:"
+                formControlName="med_cancer_type" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Depression/الاكتئاب
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_depression">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_depression').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_depression_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Osteoporosis/هشاشة العظام
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_osteoporosis">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_osteoporosis').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_osteoporosis_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Asthma/الربو
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_asthma">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_asthma').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_asthma_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Inherited disease/الأمراض الوراثية
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_inheriteddis">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_inheriteddis').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_inheriteddis_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Thyroid problem/مشاكل الغدة الدرقية
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_thyroid">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_thyroid').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_thyroid_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Liver Disease/أمراض الكبد
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_liver">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_liver').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_liver_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Arthritis Rheumatism/التهاب المفاصل الروماتيزم
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_arthritis">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_arthritis').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_arthritis_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Hepatitis A-B-C-D/التهاب الكبد A-B-C-D
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_hepatitis">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_hepatitis').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_hepatitis_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Sickle cell disease/مرض فقر الدم المنجلي
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_sickle">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_sickle').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_sickle_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Neurological disorder/الاضطرابات العصبية
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_neurological">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_neurological').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_neurological_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Fainting or dizzy spills/حالات الإغماء أو الدوار
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_faint">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_faint').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_faint_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Headache/migraine/الصداع/الشقيقة
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_migraine">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_migraine').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_migraine_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Epilepsy/seizures/الصرع
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_epilepsy">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+         </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_epilepsy').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input type="number"  matInput placeholder="If yes, specify year"
+            formControlName="med_epilepsy_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Other (Please specify)
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group"  >
+    <mat-form-field class="mat-form-field-fluid">
+        <input matInput placeholder="If other, please specify/اخر:"
+            formControlName="med_other_specify" />
+    </mat-form-field>
+</div>
+</div>
+
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Polycystic Ovary Syndrome /متلازمة المبيض المتعدد الكيسات  
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_polycystic_ovary_syndrome">
+                 <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                    <mat-radio-button  value="No">No/لا</mat-radio-button>
+                    <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                    <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+             </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('med_polycystic_ovary_syndrome').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input type="number"  matInput placeholder="If yes, specify year"
+                formControlName="med_polycystic_ovary_syndrome_year" />
+        </mat-form-field>
+    </div>
+    </div>
+
+<hr style="border: 0;
+clear:both;
+display:block;
+width: 100%;               
+background-color:grey;
+height: 1px;">
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Did you have any surgery?/هل خضعت لأي عملية جراحية
+        </label>
+    </div>
+</div>
+<div class="col-md-4 form-group">
+    <div><br>
+        <mat-radio-group formControlName="med_surgery">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>
+                <mat-radio-button  value="Don't Know">Don't Know/غير متأكد</mat-radio-button>
+                
+          </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_surgery').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input matInput placeholder="If yes, please specify/اذا نعم, حدد: "
+            formControlName="med_surgery_yestxt" />
+    </mat-form-field>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('med_surgery').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+            <input matInput [matDatepicker]="dobPicker2"
+                   (click)="dobPicker2.open()"
+                   [max]="maxDate"
+                   autocomplete="off"
+                   placeholder="Date of surgery" formControlName="med_surgery_dateofsurgerytxt" />
+            <mat-datepicker-toggle matSuffix [for]="dobPicker2"></mat-datepicker-toggle>
+            <mat-datepicker #dobPicker2></mat-datepicker>
+            <!--<mat-hint align="start">Please enter-->
+            <!--<strong>Date of Birth</strong> in 'mm/dd/yyyy' format</mat-hint>-->
+        </mat-form-field>
+           
+</div>
+</div>
+<hr style="border: 0;
+clear:both;
+display:block;
+width: 100%;               
+background-color:grey;
+height: 1px;">
+
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Have you had?  هل خضعت لـ ؟  
+            </label>
+        </div>
+    </div>
+    <div class="col-md-4 form-group">
+        <div><br>
+            <mat-radio-group formControlName="kidneytransplant_surgery">
+                <mat-radio-button  value="Kidney transplant (with no diabetes)">Kidney transplant (with no diabetes) عملية زرع الكلى (مع عدم وجود داء السكري)</mat-radio-button>
+                <mat-radio-button  value="Dialysis therapy (with no diabetes)">Dialysis therapy (with no diabetes) علاج غسيل الكلى (مع عدم وجود داء السكري)</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+
+
+<hr style="border: 0;
+clear:both;
+display:block;
+width: 100%;               
+background-color:grey;
+height: 1px;">
+<div class="form-group col-md-12 row">
+
+<div class="col-md-4 kt-margin-bottom-20-mobile">
+    <label>Are you currently taking medications for these conditions? (you can tick more than one answer)حاليا, هل تتناول أدوية لأي من هذه الحالات المرضية؟ (بإمكانك أن تختار أكثر من اجابة)</label>
+</div>
+    <div class="col-md-5 kt-margin-bottom-20-mobile">
+    <div class="mat-form-field-fluid">
+
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_hypertension">Hypertension/ارتفاع الضغط</mat-checkbox>
+       <mat-checkbox class="lab-mar-right-15"   formControlName="medication_kidneypatient">Medicines for kidney patients (chronic kidney disease<br/>  (CKD))أدوية لمرضى الكلى (مرض الكلى المزمن)</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_coronaryartery">Medicines for Coronary artery disease (CAD)<br/> أدوية لداء الشريان التاجي</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_strokemedications">Stroke medications(حادثة وعائية دماغية)    أدوية السكتة الدماغية</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_ischemicattack">Medicines for transient ischemic attack (TIA)<br/> أدوية النوبة الإقفارية العابرة</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_anti_epilepticagents">Anti-epileptic agents العوامل المضادة للصرع </mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_contraceptivepills">Oral contraceptive pills (OCP)حبوب منع الحمل الفموية </mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_steroids">Steroids الستيرويدات</mat-checkbox> 
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_polycystic_ovary_syndrome">Polycystic Ovary Syndrome (PCOS) متلازمة المبيض المتعدد الكيسات</mat-checkbox> 
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_antibiotics">Antibiotics (past 3 months) (المضادات الحيوية (الأشهر الثلاثة الماضية</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_choles">High cholesterol/ارتفاع الكولسترول</mat-checkbox>
+        <mat-checkbox  class="lab-mar-right-15"  formControlName="medication_osteo">Osteoporosis/هشاشة العظام</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_vit">Vitamin supplements/المكملات الغذائية</mat-checkbox>
+        
+    </div>
+    </div>
+    <div class="col-md-3 kt-margin-bottom-20-mobile">
+    <div class="mat-form-field-fluid">
+
+         <mat-checkbox class="lab-mar-right-15"   formControlName="medication_type1">Type 1 Diabetes/مرض السكري النوع الأول </mat-checkbox>
+         <mat-checkbox  class="lab-mar-right-15"  formControlName="medication_type2">Type 2 Diabetes/مرض السكري النوع الثاني</mat-checkbox>
+         <mat-checkbox class="lab-mar-right-15"   formControlName="medication_obe">Obesity/السمنة </mat-checkbox>
+       <mat-checkbox class="lab-mar-right-15"   formControlName="medication_cancer">Cancer/لسرطان</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_dep">Depression/الاكتئاب</mat-checkbox>
+        <mat-checkbox  class="lab-mar-right-15"  formControlName="medication_osteo">Osteoporosis/هشاشة العظام</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_heart">Heart disease/أمراض القلب</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_inhdis">Inherited disease/الأمراض الوراثية</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="medication_asth">Asthma/الربو</mat-checkbox>
+        <mat-checkbox  class="lab-mar-right-15"  formControlName="medication_none">None/لا شيء</mat-checkbox>
+        
+    </div>
+    </div>
+
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Have you taken thae COVID-19 vaccine? 
+                هل أخذت لقاح كوفيد -19؟
+                         
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_covid_vaccine"> 
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+         
+                <mat-radio-button  value="Not sure">Not sure/غير متأكد</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Are all your other vaccinations up-to-date? /هل أكملت التطعيمات؟          
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div><br>
+            <mat-radio-group formControlName="med_vaccine"> 
+                <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+         
+                <mat-radio-button  value="Not sure">Not sure/غير متأكد</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+
+ 
+<div class="row col-md-12 form-group"  *ngIf="form.get('med_prediabetes').value == 'Yes'">
+    <h5>
+        2.d: Medical details ( If Pre-Diabetic)التفاصيل الطبية (إذا  كنت في مرحلة ما قبل السُّكري)       
+    </h5>
+</div>  
+<div class="row col-md-12 form-group"  *ngIf="form.get('med_prediabetes').value == 'Yes'">
+    
+    <div class="col-md-8 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <label class="lab-mar-right-20" >Do you have pre-diabetes? /هل تعاني من مضاعفات متعلقة بمقدمات السكري؟</label>
+            <br>
+            <mat-radio-group aria-labelledby="Dyslipidemia"  formControlName="diabetes_com">
+                 <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>    
+                <mat-radio-button  value="Not sure">Not sure/غير متأكد</mat-radio-button>    
+         
+            </mat-radio-group>
+        </div>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile"  *ngIf="form.get('med_prediabetes').value == 'Yes' && form.get('diabetes_com').value == 'Yes'">
+        <mat-form-field  class="mat-form-field-fluid">
+            <input type="number" matInput placeholder="If Yes, number of years/اذا نعم, عدد السنين:" formControlName="diabetes_com_specify" autocomplete="off"    />
+        </mat-form-field>
+    </div>
+</div>
+
+<div class="row col-md-12 form-group"  *ngIf="form.get('med_prediabetes').value == 'Yes' && form.get('diabetes_com').value == 'Yes'">
+    <h5>
+        If Yes, what are the specific pre-diabetes related complications? (Please select as many as appropriate)
+        إذا كانت الإجابة بنعم، فما هي المضاعفات المحددة المتعلقة بمقدمات السكري؟ إذا نعم, ما هي المشاكل الصحية المتعلقة بمرض السكري؟ (ضع علامات في المربع كما يناسب)
+         <br><strong>(تملأ من قبل الطبيب)</strong>
+    </h5>
+</div>
+<div class="row col-md-12 form-group"  *ngIf="form.get('med_prediabetes').value == 'Yes' && form.get('diabetes_com').value == 'Yes'">
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox formControlName="spec_app_retinopathy"  >Retinopathy/إعتلال <br/>الشبكية: </mat-checkbox>
+            <br>
+            <mat-hint>
+                
+                * Nonproliferative<br>
+                * Proliferative<br>
+                * Laser
+            </mat-hint>
+        </div>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox   formControlName="spec_app_neuropathy"  >Neuropathy/الاعتلال العصبي:</mat-checkbox>
+            <br>
+            <mat-hint>
+                *Foot (ulcers):/قرحة القدم: <br>
+                *gangrene//الغرغرينا<br>
+                *Loss of sensation/numbness/pain/burning/tingling/فقدان الإحساس ، تنميل ، ألم ، حرقان ، وخز<br>
+                *Amputation/بتر<br>
+                *Loss of toe, foot, or leg/فقدان اصبع القدم أو القدم أو الساق<br>
+                *Pain in calf muscles while walking/ألم في عضلات الساق أثناء المشي<br>
+                *Circulation, peripheral vascular disease, operation on artery in legs/الدورة الدموية ، أمراض الأوعية الدموية الطرفية ، العملية الجراحية على الشريان
+            </mat-hint>
+        </div>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile" *ngIf="form.get('spec_app_neuropathy').value">
+        <mat-form-field  class="mat-form-field-fluid">
+            <input type="text" matInput placeholder="Other/اخر:" formControlName="neuropathy_other" autocomplete="off"    />
+           
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox   formControlName="spec_app_cva"  >Cerebrovascular accident (C.V.A)/<br/>الحوادث الدماغية:
+            </mat-checkbox>
+            <br>
+            <mat-hint>
+                *TIA/سكتة دماغية خفيفة <br>
+                *Stroke (bleeding, Ischemia)/السكتة الدماغية (نزيف ، نقص تروية) <br>
+                *Bleeding/نزيف<br>
+                *Loss of sensation down one side of the body/فقدان الشعور في نصف الجسد<br>
+                *Difficulty in speaking/eating/صعوبة في النطق أو الأكل<br>
+                *Operation on artery or neck/عمليات جراحية على شريان في الرقبة<br>
+                *Facial drop/تدلي الوجه<br>
+                *Paralysed arm or leg/الشلل في الذراع أو الساق
+            </mat-hint>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12 form-group"  *ngIf="form.get('med_prediabetes').value == 'Yes' && form.get('diabetes_com').value == 'Yes'">
+    
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox   formControlName="spec_app_nephropathy" >Nephropathy</mat-checkbox>
+            <br>
+            <mat-hint>
+                *Protein or albumin in the urine/وجود البروتين أو الزلال في البول<br>
+                *Albuminuria/البول الزلالي<br>
+                *30-299<br>
+                *>300<br>
+                *eGFR/معدل الترشيح الكبيبي<br>
+            </mat-hint>
+        </div>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile"  *ngIf="form.get('spec_app_nephropathy').value">
+        <mat-form-field  class="mat-form-field-fluid">
+            <input type="text" matInput placeholder="eGFR" formControlName="nephropathy_albuminuria_others" autocomplete="off"    />
+            
+        </mat-form-field>
+    </div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox   formControlName="spec_app_cad"  >Coronary artery disease(C.A.D))/<br/>تصلب الشريان التاجي:
+            </mat-checkbox>
+            <br>
+            <mat-hint>
+                * Coronary artery bypass grafting (CABG)/ﺟراﺣﺔ اﻟﺷرﯾﺎن اﻟﺗﺎﺟﻲ اﻟﺗﺣوﯾﻟﯾﺔ<br>
+                * Percutaneous Coronary Intervention (PCI)/التدخل التاجي<br>
+                * Arrhythymias (AF)/اضطراب النبض
+            </mat-hint>
+        </div>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox   formControlName="spec_app_bariatric_surgery"  >Bariatric Surgery/<br/>جراحة لعلاج البدانة: </mat-checkbox>
+            <br>
+            <mat-hint>
+                
+* Gastric Bypass/تحويل مسار المعدة<br>
+* Gastric Sleeve/تكميم المعدة<br>
+* Gastric Banding/ربط المعدة
+               
+            </mat-hint>
+        </div>
+    </div>
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+        <div class="mat-form-field-fluid">
+            <mat-checkbox   formControlName="diabetes_comp_other_check"  >Other/اخر:</mat-checkbox>
+            <div [hidden]="!form.get('diabetes_comp_other_check').value">
+                <mat-form-field   class="mat-form-field-fluid">
+                    <input  type="text" matInput placeholder="Please specify/اخر، حدد" formControlName="diabetes_comp_others_text" autocomplete="off"    />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<div class="row col-md-12 form-group"  *ngIf="form.get('med_prediabetes').value == 'Yes' && form.get('diabetes_com').value == 'Yes'">
+
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+        <label>* Current pre-diabetes management method/أسلوب إدارة مقدمات السكري الحالية</label>
+    </div>
+        <div class="col-md-6 kt-margin-bottom-20-mobile">
+        
+        <div class="mat-form-field-fluid">
+            <mat-checkbox class="lab-mar-right-15" formControlName="diabetes_man_none">None/لاشئ</mat-checkbox>
+  <mat-checkbox class="lab-mar-right-15"   formControlName="diabetes_man_tabletsonly">Tablets only/أقراص الدواء فقط </mat-checkbox>
+            <mat-checkbox class="lab-mar-right-15"   formControlName="diabetes_man_dietonly">Diet only/الحمية الغذائية فقط</mat-checkbox>
+            <mat-checkbox class="lab-mar-right-15"   formControlName="diabetes_man_insulinonly">Insulin only/الأنسولين فقط</mat-checkbox>
+            <mat-checkbox  class="lab-mar-right-15"   formControlName="diabetes_man_diettablets">Diet & Tablets/الحمية الغذائية وأقراص الدواء </mat-checkbox>
+            <mat-checkbox class="lab-mar-right-15"   formControlName="diabetes_man_dietinsulin">Diet & Insulin/الحمية الغذائية والأنسولين</mat-checkbox>
+            <mat-checkbox class="lab-mar-right-15"    formControlName="diabetes_man_diettabletsinsulin">Diet, Tablets & Insulin/الحمية الغذائية وأقراص الدواء والأنسولين</mat-checkbox>
+            <mat-checkbox class="lab-mar-right-15"   formControlName="diabetes_man_unknown">Not sure/غير متأكد</mat-checkbox>
+            <mat-checkbox  class="lab-mar-right-15"   formControlName="current_diabetes_man_other">Others(please specify)/آخر, (حدد)</mat-checkbox>
+            <div class="col-md-12 row" [hidden]="!form.get('current_diabetes_man_other').value">
+                <mat-form-field   class="mat-form-field-fluid">
+                    <input   type="text" matInput placeholder="Please specify" formControlName="current_diabetes_man_other_text" autocomplete="off"    />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12 form-group">
+    <h5>
+        3. Participant’s Lifestyle Details/تفاصيل نمط الحياة
+    </h5>
+</div>
+
+
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+           Smoking status/حالة التدخين:
+        </label>
+    </div>
+</div>
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="life_smokingstatus">
+            <mat-radio-button  value="Smoker">Smoker/مدخن</mat-radio-button>
+            <mat-radio-button  value="Ex-Smoker">Ex-smoker/مدخن سابق</mat-radio-button>
+            <mat-radio-button  value="Never">Never smoked/لا على الإطلاق</mat-radio-button>
+            <mat-radio-button  value="Prefer not to disclose">Prefer not to disclose/أفضل عدم الإجابة</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12 form-group">
+    <h5>
+        3.a: Participant’s Physical Activity/النشاط الجسدي
+    </h5>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Do you exercise or walk?هل تقوم بممارسة الرياضة أو المشي
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div>
+        <mat-radio-group formControlName="walk">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+              <mat-radio-button  value="Other">Other/اخر:</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+
+    <div class="col-md-2 form-group" *ngIf="form.get('walk').value == 'Yes'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-placeholder >If Yes,how many<br/> minutes a week?<br/>/إذا نعم<br/>, كم دقيقة في الأسبوع</mat-placeholder>
+
+            <input matInput type="number" style="height: 65px;" 
+                formControlName="walk_ifyes" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-2 form-group" *ngIf="form.get('walk').value == 'Other'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Other, Please Specify/اخر:"
+                formControlName="walk_others_specify" />
+        </mat-form-field>
+    </div>
+</div>
+<div class="col-md-12 row" >
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+                Intensity/شدة التمارين
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6  form-group">
+        <div>
+            <mat-radio-group formControlName="walking_intensity">
+                <mat-radio-button  value="Low">Low/منخفضة</mat-radio-button>
+                <mat-radio-button  value="Moderate">Moderate/متوسطة</mat-radio-button>
+                <mat-radio-button  value="High">High/عالية</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+<div class="col-md-2 form-group" >
+    <mat-form-field class="mat-form-field-fluid">
+        <mat-placeholder>Hours of sedentary<br/>activity/sitting or<br/>reclining posture<br/>in a typical day?<br/>ساعات من العمل جلوساً<br/>/ الجلوس أو وضعية الاستلقاء<br/> في يوم عادي؟</mat-placeholder>
+        <input matInput  style="height: 125px;" 
+        type="number"     formControlName="reclining_posture" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row  col-md-12">
+<div class="form-group">
+    <h5>
+        3.b: Participant’s Diet/الحمية الغذائية
+    </h5>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Do you follow a healthy diet/هل تتبع حمية صحية 
+        </label>
+    </div>
+</div>
+
+<div class="col-md-6 form-group">
+    <div>
+        <mat-radio-group formControlName="healthy_diet">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+              <mat-radio-button  value="Others">Others/اخر</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-4 form-group" *ngIf="form.get('healthy_diet').value == 'Others'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input matInput placeholder="If Others, Please specify/آخر ,حدد"
+               formControlName="diet_other" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Weight change in the past 5 years/تغير في الوزن خلال الخمس سنوات الماضية:
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="weight_change">
+            <mat-radio-button  value="Increased">Increased/زيادة</mat-radio-button>
+            <mat-radio-button  value="Decreased">Decreased/نقصان</mat-radio-button>
+            <mat-radio-button  value="No change">No change/لم يتغير</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Are you on a special diet to lose/gain weight?/هل تتبع حمية محددة لانقاص الوزن  
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="spl_diet">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+          </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            How many times a week do you consume fast food?/كم مرة في الاسبوع تلتهم الوجبات السريعة
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="fastfood_intake">
+            <mat-radio-button  value="Zero times">Zero times/صفر لتر</mat-radio-button>
+            <mat-radio-button  value="2 times">2 times/اثنين لتر</mat-radio-button>
+            <mat-radio-button  value="4 times">4 times/أربع لتر</mat-radio-button>
+            <mat-radio-button  value="More than 6 times">More than 6 times/أكثر من ست لتر</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            How many times a week do you consume fruits/vegetables?/كم مرة في الاسبوع تلتهم الخضروات والفواكه؟
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="fruits_veg">
+            <mat-radio-button  value="Zero times">Zero times/صفر لتر</mat-radio-button>
+            <mat-radio-button  value="1 time">1 time/اثنين لتر</mat-radio-button>
+            <mat-radio-button  value="2 times">2 times/أربع لتر</mat-radio-button>
+            <mat-radio-button  value="More than 3 times">More than 3 times/أكثر من ست لتر</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            How much soft drinks do you consume per week?/ما هي كمية المشروبات الغازية التي تتناولها أسبوعيا؟
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="softdrinks">
+            <mat-radio-button  value="Zero Liters">Zero Liters/صفر لتر</mat-radio-button>
+            <mat-radio-button  value="2 Liters">2 Liters/اثنين لتر</mat-radio-button>
+            <mat-radio-button  value="4 Liters">4 Liters/أربع لتر</mat-radio-button>
+            <mat-radio-button  value="More than 6 Liters">More than 6 Liters/أكثر من ست لتر</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start">
+                Do you eat after midnight (12am)?/هل تتناول الطعام بعد منتصف الليل (12 مساءا   
+            </label>
+        </div>
+    </div>
+
+    <div class="col-md-8 form-group">
+        <div>
+            <mat-radio-group formControlName="eat_after_midnight">
+                 <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+         
+            </mat-radio-group>
+        </div>
+    </div>
+</div>
+<div class="row col-md-12 ">
+<div class="col-md-12 row form-group">
+    <h5>
+        3.c: Participant’s Satisfaction/رضا المشارك 
+    </h5>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Are you satisfied with your body?/هل انت راض عن قوامك؟
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="satisfied_body">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+          </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Are you happy with your life?/هل انت سعيد بحياتك؟
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="happy_life">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+          </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start">
+            Do you consider yourself a healthy individual?/هل تعتبر نفسك شخص صحي؟
+        </label>
+    </div>
+</div>
+
+<div class="col-md-8 form-group">
+    <div>
+        <mat-radio-group formControlName="healthy_individual">
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+          </mat-radio-group>
+    </div>
+</div>
+</div>
+<div class="row col-md-12 ">
+    <div class="col-md-12 row form-group">
+    <h5>
+        3.d Sunlight exposure/التعرض لأشعة الشمس
+    </h5>
+</div>
+
+<div class="row col-md-12">
+    <div class="col-md-12">
+        <div class="kt-section">
+            <label align="start">
+                During the following time intervals, what is your average time spent outside?
+            </label>
+        </div>
+    </div>
+    
+    </div>
+    <br/>   <div class="col-md-12 row">
+<div class="col-md-4">
+    <br/>  <div class="kt-section">
+        <label align="start">
+            6:00-10:00
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+     <div>
+        <br/>   <mat-radio-group formControlName="average_time_spent">
+            <mat-radio-button  value="not outside">not outsideلا تخرج</mat-radio-button>
+                    <mat-radio-button  value="Less than 15mins">Less than 15minsدقيقة</mat-radio-button>
+                    <mat-radio-button  value="15-30mins">15-30minsدقيقة</mat-radio-button>
+                    <mat-radio-button  value="30-60mins">30-60minsدقيقة</mat-radio-button>
+                    <mat-radio-button  value="1-2h">1–2hساعة</mat-radio-button>
+                    <mat-radio-button  value="2-3h">2-3hساعة</mat-radio-button>
+                    <mat-radio-button  value="3-4h">3-4hساعة</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</div>
+</div><br/>
+<div class="row col-md-12">
+     <div class="col-md-4">
+        <br/>    <div class="kt-section">
+            <label align="start">
+                10:00-14:00
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div>
+            <br/>       <mat-radio-group formControlName="average_time_spent14">
+                <mat-radio-button  value="not outside">not outsideلا تخرج</mat-radio-button>
+                        <mat-radio-button  value="Less than 15mins">Less than 15minsدقيقة</mat-radio-button>
+                        <mat-radio-button  value="15-30mins">15-30minsدقيقة</mat-radio-button>
+                        <mat-radio-button  value="30-60mins">30-60minsدقيقة</mat-radio-button>
+                        <mat-radio-button  value="1-2h">1–2hساعة</mat-radio-button>
+                        <mat-radio-button  value="2-3h">2-3hساعة</mat-radio-button>
+                        <mat-radio-button  value="3-4h">3-4hساعة</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    
+    </div>
+    <br/><div class="row col-md-12">
+   <div class="col-md-4">
+    <br/>    <div class="kt-section">
+                <label align="start">
+                    14:00-18:00
+                </label>
+            </div>
+        </div>
+        <div class="col-md-6 form-group">
+            <div>
+                <br/><mat-radio-group formControlName="average_time_spent18">
+                    <mat-radio-button  value="not outside">not outsideلا تخرج</mat-radio-button>
+                            <mat-radio-button  value="Less than 15mins">Less than 15minsدقيقة</mat-radio-button>
+                            <mat-radio-button  value="15-30mins">15-30minsدقيقة</mat-radio-button>
+                            <mat-radio-button  value="30-60mins">30-60minsدقيقة</mat-radio-button>
+                            <mat-radio-button  value="1-2h">1–2hساعة</mat-radio-button>
+                            <mat-radio-button  value="2-3h">2-3hساعة</mat-radio-button>
+                            <mat-radio-button  value="3-4h">3-4hساعة</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </div>
+        </div>
+<div class="row col-md-12 ">
+<div class="col-md-12 row form-group">
+    <h5>
+        4. Participant’s Family History/تاريخ العائلة
+    </h5>
+</div>
+</div>
+<div class="row col-md-12 ">
+<div class="col-md-12 row form-group">
+  
+    <h5>4.a: Family information/معلومات العائلة</h5>
+</div>
+</div>
+<div class="row col-md-12">   
+    <div class="col-md-4">
+        <div class="kt-section">
+            <label align="start"><br>
+                Father's Ethnicity/عرق الأب
+            </label>
+        </div>
+    </div>
+    <div class="col-md-6 form-group">
+        <div>
+            <mat-radio-group aria-labelledby="Ethnicity"  formControlName="fam_fatethnicity"><br>
+                <mat-radio-button matInput  value="Arab/Bedouin">Arab/Bedouin/عرب/بدو</mat-radio-button>
+                                    <mat-radio-button  matInput value="Ajam">Ajam/عجم</mat-radio-button>
+                                    <mat-radio-button  matInput value="Bloush">Bloush/بلوش</mat-radio-button>
+            <mat-radio-button  matInput value="Yemeni">Yemeni/يمني</mat-radio-button>
+            <mat-radio-button  matInput value="Mixed">Mixed/مختلط</mat-radio-button>
+                                    <mat-radio-button  matInput value="Other">Other/آخر</mat-radio-button>
+            </mat-radio-group>
+
+        </div>
+    </div>
+        <div class="col-md-2 form-group" *ngIf="form.get('fam_fatethnicity').value == 'Other'" >
+            <mat-form-field class="mat-form-field-fluid">
+                <input matInput placeholder="If Other, specify/اخر,حدد"
+                    formControlName="fam_fatethnicity_other" />
+            </mat-form-field>
+        </div>
+    
+</div>
+
+<div class="col-md-4 kt-margin-bottom-20-mobile">
+        
+<mat-form-field class="mat-form-field-fluid">
+    <input matInput placeholder="Father's Place Of Birth/بلد الميلاد للأب:" formControlName="fam_fatplaceofbirth" [matAutocomplete]="pob1">
+    <mat-autocomplete #pob1="matAutocomplete">
+        <mat-option *ngFor="let nationality of filteredFatherPlace | async" [value]="nationality">
+            {{ nationality  }} 
+        </mat-option>
+    </mat-autocomplete>
+    <mat-error>
+        Place of Birth is
+        <strong>required</strong>
+    </mat-error>
+    <!--<mat-hint align="start">Please enter-->
+    <!--<strong>Nationality</strong>-->
+    <!--</mat-hint>-->
+</mat-form-field>
+</div>
+<div class="row col-md-12">   
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Mother's Ethnicity/عرق الأم:
+        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div>
+        <mat-radio-group aria-labelledby="Ethnicity"  formControlName="fam_motethnicity"><br>
+            <mat-radio-button matInput  value="Arab/Bedouin">Arab/Bedouin/عرب/بدو</mat-radio-button>
+                                <mat-radio-button  matInput value="Ajam">Ajam/عجم</mat-radio-button>
+                                <mat-radio-button  matInput value="Bloush">Bloush/بلوش</mat-radio-button>
+            <mat-radio-button  matInput value="Yemeni">Yemeni/يمني</mat-radio-button>
+            <mat-radio-button  matInput value="Mixed">Mixed/مختلط</mat-radio-button>
+                                <mat-radio-button  matInput value="Other">Other/آخر</mat-radio-button>
+        </mat-radio-group>
+
+    </div>
+</div>
+    <div class="col-md-2 form-group" *ngIf="form.get('fam_motethnicity').value == 'Other'" >
+        <mat-form-field class="mat-form-field-fluid">
+            <input matInput placeholder="If Other,please specify/اخر,حدد"
+                formControlName="fam_motethnicity_other" />
+        </mat-form-field>
+    </div>
+
+</div>
+<div class="col-md-4 kt-margin-bottom-20-mobile">
+        
+<mat-form-field class="mat-form-field-fluid">
+    <input matInput placeholder="Mother's Place Of Birth/بلد الميلاد للأم:" formControlName="fam_motplaceofbirth" [matAutocomplete]="pob">
+    <mat-autocomplete #pob="matAutocomplete">
+        <mat-option *ngFor="let data of filteredMotherPlace | async" [value]="data">
+            {{ data  }}
+        </mat-option>
+    </mat-autocomplete>
+    <mat-error>
+        Place of Birth is
+        <strong>required</strong>
+    </mat-error>
+    <!--<mat-hint align="start">Please enter-->
+    <!--<strong>Nationality</strong>-->
+    <!--</mat-hint>-->
+</mat-form-field>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+        Are your parents related?هل تربط والديك صلة قرابة؟        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div>
+        <mat-radio-group formControlName="fam_parents_related"><br>
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+        </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('fam_parents_related').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input matInput placeholder="If yes, please specify/اذا نعم, حدد صلة القرابة: "
+            formControlName="fam_parents_related_yes" />
+    </mat-form-field>
+</div>
+</div>
+<div class="row col-md-12">
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Do you have a grandfather; grandmother; uncles or aunts with diabetes? هل لديك جد أو جدة أو أعمام أو خالات مصابون بمرض السكري؟        </label>
+    </div>
+</div>
+<div class="col-md-6 form-group">
+    <div>
+        <mat-radio-group formControlName="fam_grandfatmat_related"><br>
+             <mat-radio-button  value="Yes">Yes/نعم</mat-radio-button>
+                <mat-radio-button  value="No">No/لا</mat-radio-button>        
+        </mat-radio-group>
+    </div>
+</div>
+<div class="col-md-2 form-group" *ngIf="form.get('fam_grandfatmat_related').value == 'Yes'" >
+    <mat-form-field class="mat-form-field-fluid">
+        <input matInput placeholder="If yes, please specify/اذا نعم, حدد صلة القرابة: "
+            formControlName="fam_grandfatmat_related_year" />
+    </mat-form-field>
+</div>
+</div>
+<div class="form-group col-md-12 row">
+
+<div class="col-md-4 kt-margin-bottom-20-mobile">
+    <label>Has anyone in your immediate family (siblings or parents) ever had any of the following conditions?هل عانى أي فرد من أفراد عائلتك المباشرين (الأشقاء أو والديك) من أي من الحالات التالية؟</label>
+</div>
+    <div class="col-md-4 kt-margin-bottom-20-mobile">
+    <div class="mat-form-field-fluid">
+        
+      
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_hypertension">Hypertension/ارتفاع الضغط</mat-checkbox>
+       
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_dep">Depression/الاكتئاب</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_type1">Type 1 Diabetes/مرض السكري النوع الاول</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_type2">Type 2 Diabetes/مرض السكري النوع الثاني</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_gesdia">Gestational diabetes/سكري الحمل</mat-checkbox>
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_cancer">Cancer(if yes,type)/السرطان (اذا نعم, النوع):</mat-checkbox>
+       
+        <mat-checkbox  class="lab-mar-right-15"  formControlName="fam_other">Other/(اخر)</mat-checkbox>
+        
+    </div>
+</div>
+
+<div class="col-md-2 kt-margin-bottom-20-mobile">
+    <div class="mat-form-field-fluid">
+        <mat-checkbox class="lab-mar-right-15"   formControlName="fam_heart">Heart disease/أمراض القلب</mat-checkbox>
+        <mat-checkbox  class="lab-mar-right-15"  formControlName="fam_osteo">Osteoporosis/هشاشة العظام</mat-checkbox>
+    </div>
+    </div>
+</div>
+
+<div class="row col-md-12 ">
+    <div class="col-md-12 row form-group">
+        <div class="col-md-4 form-group">
+        </div>
+        <div *ngIf="form.get('fam_cancer').value"  class="dis-con">
+            <div class="col-md-4 form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="If yes, type"
+                           formControlName="fam_condition_cancer_type" />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+<div class="row col-md-12 ">
+    <div class="col-md-12 row form-group">
+        <div class="col-md-4 form-group">
+        </div>
+        <div *ngIf="form.get('fam_other').value"  class="dis-con">
+            <div class="col-md-4 form-group">
+                <mat-form-field class="mat-form-field-fluid">
+                    <input matInput placeholder="If other, please specify/اخر:"
+                           formControlName="fam_condition_other" />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="row col-md-12 ">
+    <div class="col-md-12 row form-group">
+        <h5>
+            5. Socioeconomic Questions
+        </h5>
+    </div>
+    </div>
+<div class="form-group  row">
+    <div class="col-md-3">
+        <div class="kt-section">
+            <label align="start"><br>
+                Number of residence in household?   عدد القاطنين في المنزل
+            </label>
+        </div>
+    </div>
+    <div class="col-md-3 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-placeholder>Number of children (below 18) <br/>  عدد الأطفال (دون ال 18 عاماً)</mat-placeholder>
+            <input type="number"  matInput style="height: 25px;"  autocomplete="off"  formControlName="noofchildren" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-3 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-placeholder>Number adults (aged 18 +) <br/>عدد البالغين (18 سنة فأكثر)</mat-placeholder>
+
+            <input type="number"  matInput style="height: 25px;"  autocomplete="off" formControlName="noofadults" />
+        </mat-form-field>
+    </div>
+    <div class="col-md-3 kt-margin-bottom-20-mobile">
+        <mat-form-field class="mat-form-field-fluid">
+            <mat-placeholder>Number of bedrooms in<br/>household?عدد غرف النوم في المنزل؟</mat-placeholder>
+
+            <input type="number" matInput style="height: 25px;"  autocomplete="off"  formControlName="noofbedrooms" />
+        </mat-form-field>
+    </div>
+   
+</div>
+<div class="form-group  row">
+    
+<div class="col-md-4">
+    <div class="kt-section">
+        <label align="start"><br>
+            Monthly household income (AED) : دخل الأسرة الشهري (درهم إماراتي) :
+        </label>
+    </div>
+</div>
+    <div class="col-md-6 kt-margin-bottom-20-mobile">
+        <mat-radio-group aria-labelledby="Monthly household income (AED):"  formControlName="household_income"><br>
+            <mat-radio-button matInput  value="Less than 5000K">Less than 5000K/أقل من</mat-radio-button>
+            <mat-radio-button  matInput value="5,001-10,000K">5,001-10,000K</mat-radio-button>
+            <mat-radio-button  matInput value="10,001-15,000K">10,001-15,000K</mat-radio-button>
+            <mat-radio-button  matInput value="15,001-20,000K">15,001-20,000K</mat-radio-button>
+            <mat-radio-button  matInput value="Above 20,000K">Above 20,000Kأعلى من </mat-radio-button>
+        </mat-radio-group>
+
+    </div>
+</div>
+ </div>
+<div class="form-group  row">
+                
+    <div class="col-md-6  form-group"></div>
+    
+    <div class="col-md-4  form-group"></div>
+    
+    <div class="col-md-2 kt-margin-bottom-20-mobile">
+               
+        <a *ngIf="showSave" href="javascript:;" [disabled]="!form.valid" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+        mat-raised-button matTooltip="Save Details">
+        <i class="la la-save"></i>
+        <span class="kt-hidden-mobile">Save</span>
+        </a>
+        </div>  
+        </div>
+    </div>
+    
+    </form>
+</div>

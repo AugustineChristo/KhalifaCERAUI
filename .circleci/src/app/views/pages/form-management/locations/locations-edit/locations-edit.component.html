@@ -1,0 +1,31 @@
+<kt-portlet>
+	<kt-portlet-header [title]="'Location'" [class]="'kt-portlet__head--lg'" [viewLoading$]="loading$">
+		<ng-container ktPortletTools>
+			<a  [routerLink]="[ formId ? '../../' : '../']"   class="btn btn-secondary kt-margin-r-10" mat-raised-button
+				matTooltip="Back to the forms list">
+				<i class="la la-arrow-left"></i>
+				<span class="kt-hidden-mobile">Back</span>
+			</a>
+			<a href="javascript:;" class="btn btn-primary kt-margin-r-10" color="primary" (click)="onSubmit()"
+				mat-raised-button matTooltip="Save & Continue">
+				<i class="la la-save"></i>
+				<span class="kt-hidden-mobile">Save</span>
+			</a>
+
+		</ng-container>
+	</kt-portlet-header>
+
+	<kt-portlet-body>
+       
+		<mat-tab-group [(selectedIndex)]="selectedTab">
+			<mat-tab>
+				<ng-template mat-tab-label>
+					<i class="mat-tab-label-icon fa fa-user"></i>
+				City/Emirate
+				</ng-template>
+				<kt-locations-personal-details [disableInput]="isPrint"   [formData]="formId"  #applocationsPersonalDetails></kt-locations-personal-details>
+            </mat-tab>
+
+		</mat-tab-group>
+	</kt-portlet-body>
+</kt-portlet>

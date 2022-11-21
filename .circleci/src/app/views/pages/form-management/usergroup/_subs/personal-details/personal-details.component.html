@@ -1,0 +1,21 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+        <div class="kt-form__section kt-form__section--first">
+
+            <div class="form-group  row">
+                <div class="col-md-12 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="User Group" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="name" />
+                    </mat-form-field>
+                </div>
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"class="alert alert-danger">
+                    <div *ngIf="f.name.errors.required">  Group Name is required.  </div>
+                    <div *ngIf="f.name.errors.minlength">  Group Name must be at least 4 characters long.  </div>
+                </div>
+            </div>
+           
+        </div>
+    </form>
+</div>

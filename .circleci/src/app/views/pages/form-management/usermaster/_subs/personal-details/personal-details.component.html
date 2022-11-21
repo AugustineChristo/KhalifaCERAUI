@@ -1,0 +1,198 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+        <div class="kt-form__section kt-form__section--first">
+
+            <div class="form-group  row">
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="User Name" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="UserName" />
+                    </mat-form-field>
+                </div>
+                <!--&& (UserName.dirty || UserName.touched)-->
+                <div *ngIf="UserName.invalid && (UserName.dirty || UserName.touched)"class="alert alert-danger">
+                    <div *ngIf="UserName.errors.required">  User Name is required.  </div>
+                    <div *ngIf="UserName.errors.minlength">  User Name must be at least 4 characters long.  </div>
+                </div>
+    
+                <div class="col-md-8 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Full Name" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="FullName" />
+                        
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="form-group  row">
+                <div class="col-md-3 row form-group">
+                     <label style="font-size:10px;color:gray;font-family:Roboto,Helvetica Neue,sans-serif;">Role</label> 
+                    <mat-form-field  class="example-full-width" >
+                         <mat-select formControlName="Occupation" >
+                            <mat-option *ngFor="let data of filteredRole"
+                                 value="{{ data.name }}">{{ data.name }}
+                            </mat-option>
+                        </mat-select>
+                     </mat-form-field>
+                </div>
+
+                <div class="col-md-3 row form-group">
+                    <label style="font-size:10px;color:gray;font-family:Roboto,Helvetica Neue,sans-serif;">Reporting To</label> 
+                   <mat-form-field  class="example-full-width" >
+                        <mat-select formControlName="ReportingTo" >
+                           <mat-option *ngFor="let data of filteredReportingTo"
+                                value="{{ data.UserName }}">{{ data.UserName }}
+                           </mat-option>
+                       </mat-select>
+                    </mat-form-field>
+               </div>
+
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                    <div class="mat-form-field-fluid">
+                    <label id="example-radio-group-label">Department</label>
+                    </div>
+                </div>
+                <div class="col-md-4 form-group">
+        
+                    <mat-radio-group aria-labelledby="example-radio-group-label" 
+                    formControlName="CompanyName">
+                        <mat-radio-button matInput  value="BT-Full">BT-Full</mat-radio-button>
+                        <mat-radio-button  matInput value="BT-Short">BT-Short</mat-radio-button>
+                        <mat-radio-button  matInput value="CIRA">CIRA</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+
+            <!---  -->
+            <div class="form-group  row">
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Password" autocomplete="off"   type="password" 
+                        maxlength="100"
+                        formControlName="Password" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Re-Enter Password" autocomplete="off"  type="password" 
+                        maxlength="100"
+                        formControlName="ConfirmPassword"  />
+                    </mat-form-field>
+                </div>
+                <div *ngIf="f.ConfirmPassword.touched && f.ConfirmPassword.invalid" class="alert alert-danger">
+                    <div *ngIf="f.ConfirmPassword.errors.required">Password is required.</div>
+                    <div *ngIf="f.ConfirmPassword.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                </div>
+
+            </div>
+            <!---  -->
+            <div class="form-group  row">
+
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Email" autocomplete="off" type="email"
+                        maxlength="100"
+                        formControlName="Email" />
+                        <div *ngIf="Email.errors?.email" class="alert alert-danger"> Email not valid.</div> 
+                    </mat-form-field>
+                       <!--  ngModel [email]="true" -->
+                </div>
+          
+        
+                <div class="col-md-6 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Phone No" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="PhoneNumber" />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!---  -->
+            <div class="form-group  row">
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Address" autocomplete="off" 
+                        maxlength="200"
+                        formControlName="Address" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="City" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="City" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="State" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="State" />
+                    </mat-form-field>
+                </div>
+            </div>
+            <!---  -->
+            <div class="form-group  row">
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Postal Code" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="PostalCode" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="LinkedIn" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="linkedin" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Facebook" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="facebook" />
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!---  -->
+            <div class="form-group  row">
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Twitter" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="twitter" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Instagram" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="Instagram" />
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+              <!--       <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Active" autocomplete="off" 
+                        formControlName="IsActive" />
+                    </mat-form-field> -->
+                    <mat-checkbox class="lab-mar-right-15"   formControlName="IsActive">Active</mat-checkbox>
+                </div>
+            </div>
+
+
+           
+        </div>
+    </form>
+</div>

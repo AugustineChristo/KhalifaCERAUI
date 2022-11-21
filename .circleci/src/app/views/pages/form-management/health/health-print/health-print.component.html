@@ -1,0 +1,58 @@
+
+<kt-portlet id="print_form">
+    <kt-portlet-body style="padding:15px 0px 15px 0px !important; ">
+        <div class="kt-form kt-margin-b-30" *ngFor="let userrights of userRights">
+            <div class="" *ngIf="userrights.sectionid === 1; else elseBlock">
+                <kt-portlet-header [title]="'Register Nurse'" [class]="'kt-portlet__head--lg'" >
+                </kt-portlet-header>
+                <kt-portlet-body  class="kt-portlet__body">
+                    <kt-health-register-nurse [disableInput]="isPrint"   [formData]="formId" #appHealthRegisterNurse></kt-health-register-nurse>
+                </kt-portlet-body>
+            </div>
+                <div class="" #elseBlock *ngIf="formId !== undefined && userrights.sectionid === 2; else elseBlock2">
+                    <kt-portlet-header [title]="'Personal Details'" [class]="'kt-portlet__head--lg'" >
+                    </kt-portlet-header>
+                    <kt-portlet-body  class="kt-portlet__body">
+                    <kt-health-personal-details [disableInput]="isPrint"   [formData]="formId"  #appHealthPersonalDetails></kt-health-personal-details>
+                    </kt-portlet-body>     
+                 </div>
+					<div class="" #elseBlock2 *ngIf="userrights.sectionid === 3; else elseBlock3">
+						<kt-portlet-header [title]="'Research Team Member'" [class]="'kt-portlet__head--lg'" >
+						</kt-portlet-header>
+						<kt-portlet-body  class="kt-portlet__body">
+							<kt-health-research-teammember [disableInput]="isPrint"   [formData]="formId" #appHealthResearchTeamMember></kt-health-research-teammember >
+						</kt-portlet-body> </div>
+
+               
+            <div class="" #elseBlock3 *ngIf="formId !== undefined && userrights.sectionid === 4; else elseBlock4">
+                <kt-portlet-header [title]="'Physician Details'" [class]="'kt-portlet__head--lg'" >
+                </kt-portlet-header>
+                <kt-portlet-body  class="kt-portlet__body">
+                    <kt-health-physician [disableInput]="isPrint"   [formData]="formId" #appHealthPhysicianDetails></kt-health-physician>
+                </kt-portlet-body> </div>
+               
+                <div class="" #elseBlock4 *ngIf="formId !== undefined && userrights.sectionid === 5; else elseBlock5">
+                    <kt-portlet-header [title]="'Biochemical Details'" [class]="'kt-portlet__head--lg'" >
+                    </kt-portlet-header>
+                    <kt-portlet-body  class="kt-portlet__body">
+                        <kt-health-physicianbiochemical [disableInput]="isPrint"   [formData]="formId" #appHealthPhysicianDetailsBiochemical></kt-health-physicianbiochemical>
+                    </kt-portlet-body> </div>
+
+                <div class="" #elseBlock5 *ngIf="formId !== undefined && userrights.sectionid === 6">
+                    <kt-portlet-header [title]="'Urine Test Summary'" [class]="'kt-portlet__head--lg'" >
+                    </kt-portlet-header>
+                    <kt-portlet-body  class="kt-portlet__body">
+                        <kt-health-physicians [disableInput]="isPrint"   [formData]="formId" #appHealthPhysiciansDetails></kt-health-physicians>
+                    </kt-portlet-body> </div>
+
+
+        </div>
+    </kt-portlet-body>
+</kt-portlet>
+
+
+
+
+
+
+

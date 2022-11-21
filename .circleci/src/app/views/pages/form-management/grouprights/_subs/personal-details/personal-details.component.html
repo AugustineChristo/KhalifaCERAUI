@@ -1,0 +1,154 @@
+<div class="col-md-12">
+    <form autocomplete="off" [formGroup]="form" class="kt-form kt-form--group-seperator-dashed">
+        <div class="kt-form__section kt-form__section--first">
+
+            <div class="form-group  row">
+                <div class="col-md-4 row form-group">
+                    <label style="font-size:10px;color:gray;font-family:Roboto,Helvetica Neue,sans-serif;">User Group</label> 
+                   <mat-form-field class="mat-form-field-fluid" >
+                        <mat-select formControlName="name" >
+                           <mat-option *ngFor="let data of filteredUserGroup"
+                                value="{{ data.name }}">{{ data.name }}
+                           </mat-option>
+                       </mat-select>
+                    </mat-form-field>
+               </div>
+
+    <!--             <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="User Name" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="name" />
+                    </mat-form-field>
+                </div>
+      
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)"class="alert alert-danger">
+                    <div *ngIf="f.name.errors.required">  User Name is required.  </div>
+                    <div *ngIf="f.name.errors.minlength">  User Name must be at least 4 characters long.  </div>
+                </div> 
+
+
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Menu ID" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="templateid" />
+                    </mat-form-field>
+                </div> 
+            
+            -->
+
+<!--                 <div class="col-md-4 row form-group">
+                    <label style="font-size:10px;color:gray;font-family:Roboto,Helvetica Neue,sans-serif;">Menu</label> 
+                   <mat-form-field  class="example-full-width" >
+                        <mat-select formControlName="templateid" >
+                           <mat-option *ngFor="let data of filteredMenu"
+                                value="{{ data.TemplateID }}">{{ data.Name }}
+                           </mat-option>
+                       </mat-select>
+                    </mat-form-field>
+               </div>
+ -->
+               <div class="col-md-4 row form-group">
+                <mat-form-field  class="mat-form-field-fluid">
+                    <input matInput placeholder="Menu ID" formControlName="templateid" 
+                    [matAutocomplete]="manuf">
+                    <mat-autocomplete #manuf="matAutocomplete">
+                        <mat-option *ngFor="let menus of filteredMenus | async" [value]="menus">
+                            {{ menus }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+
+      <!--         
+                <div class="col-md-4 kt-margin-bottom-20-mobile">
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Section ID" autocomplete="off" 
+                        maxlength="100"
+                        formControlName="sectionid" />
+                    </mat-form-field>
+                </div>
+-->
+
+                <div class="col-md-4 row form-group">
+                    
+                    <mat-form-field class="mat-form-field-fluid">
+                        <input matInput placeholder="Sections" formControlName="sectionid" 
+                        [matAutocomplete]="manufa">
+                        <mat-autocomplete #manufa="matAutocomplete">
+                            <mat-option *ngFor="let sections of filteredSections | async" [value]="sections">
+                                {{ sections }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </div>
+            </div>
+
+          <!--   <div class="form-group  row">
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                    <mat-checkbox class="lab-mar-right-15"   
+                    formControlName="AddForm">Add</mat-checkbox>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                    <mat-checkbox class="lab-mar-right-15"   
+                    formControlName="EditForm">Edit</mat-checkbox>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                    <mat-checkbox class="lab-mar-right-15"   
+                    formControlName="DeleteForm">Delete</mat-checkbox>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                    <mat-checkbox class="lab-mar-right-15"   
+                    formControlName="ViewForm">View</mat-checkbox>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-20-mobile">
+                    <mat-checkbox class="lab-mar-right-15"   
+                    formControlName="ReportForm">Report</mat-checkbox>
+                </div>
+
+            </div> -->
+            <div class="form-group  row">
+                <div class="col-md-2 kt-margin-bottom-10-mobile">
+                    <div>New Form:</div>
+                    <mat-radio-group formControlName="AddForm" class="example-radio-group">
+                        <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-10-mobile">
+                    <div>Edit Form:</div>
+                    <mat-radio-group formControlName="EditForm" class="example-radio-group">
+                        <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-10-mobile">
+                    <div>Delete Form:</div>
+                    <mat-radio-group formControlName="DeleteForm" class="example-radio-group">
+                        <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-10-mobile">
+                    <div>View Form:</div>
+                    <mat-radio-group formControlName="ViewForm" class="example-radio-group">
+                        <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col-md-2 kt-margin-bottom-10-mobile">
+                    <div>Report Form:</div>
+                    <mat-radio-group formControlName="ReportForm" class="example-radio-group">
+                        <mat-radio-button class="example-radio-button" value="1">Yes</mat-radio-button>
+                        <mat-radio-button class="example-radio-button" value="0">No</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+            </div>
+      
+
+           
+        </div>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+
+
+
+<kt-portlet id="print_form">
+
+	<kt-portlet-body style="padding:15px 0px 15px 0px !important; ">
+		<div class="kt-form kt-margin-b-30">
+			<div class="">
+				<kt-portlet-header [title]="'Location'" [class]="'kt-portlet__head--lg'" >
+				</kt-portlet-header>
+				<kt-portlet-body  class="kt-portlet__body">
+				<kt-locations-personal-details [disableInput]="isPrint"   [formData]="formId"  #applocationsPersonalDetails></kt-locations-personal-details>
+				</kt-portlet-body>
+			</div>
+            
+	
+
+				
+		</div>
+	</kt-portlet-body>
+</kt-portlet>
